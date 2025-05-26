@@ -25,9 +25,9 @@ const Robot = () => {
       ]
     },
     {
-      vertical: false,
+      vertical: true,
       label: '模糊条件',
-      cardinality: 1,
+      cardinality: 3,
       descriptions: [
         {name: '是否启动', content: 'Content 1'},
         {name: '选项', content: 'Content 2  Content 2  Content 2  Content 2'},
