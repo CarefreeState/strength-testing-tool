@@ -7,6 +7,7 @@ import {
 } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
+import OkButton from '@/components/OkButton';
 
 echarts.use([
   TooltipComponent,
@@ -119,7 +120,19 @@ const DetailHorizontalBar = () => {
     };
   }, []);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '100%' }} />;
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div ref={chartRef} style={{ width: '100%', height: '100%' }} />
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 10,
+        zIndex: 10
+      }}>
+        <OkButton />
+      </div>
+    </div>
+  );
 };
 
 export default DetailHorizontalBar;

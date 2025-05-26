@@ -7,6 +7,7 @@ import {
 } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
+import QueryPagination from '@/components/QueryPagination'
 
 echarts.use([
   TitleComponent,
@@ -148,7 +149,21 @@ const QueryHorizontalBar = () => {
     };
   }, []);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '100%' }} />;
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div ref={chartRef} style={{ width: '100%', height: '95%' }} />
+      <div style={{ 
+        width: '100%', 
+        height: '5%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <QueryPagination />
+      </div>
+    </div>
+    
+  );
 };
 
 export default QueryHorizontalBar;

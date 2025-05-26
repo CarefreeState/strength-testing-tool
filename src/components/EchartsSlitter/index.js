@@ -24,7 +24,7 @@ const CustomSplitter = ({left, right, top, ..._a}) => {
       <Splitter.Panel min="5%" defaultSize="30%">
           {top}
       </Splitter.Panel>
-      <Splitter.Panel min="50%" defaultSize="70%">
+      <Splitter.Panel min="70%" defaultSize="70%">
         <Splitter
           style={Object.assign({ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }, style)}
           {...restProps}

@@ -2,6 +2,7 @@ import CollapseCondition from '@/components/CollapseCondition'
 import EchartsSlitter from '@/components/EchartsSlitter'
 import QueryHorizontalBar from '@/components/QueryHorizontalBar'
 import DetailHorizontalBar from '@/components/DetailHorizontalBar'
+import QueryPagination from '@/components/QueryPagination'
 
 const Robot = () => {
   // item: {label, descriptions:[name, content]}
@@ -45,23 +46,34 @@ const Robot = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ flex: 1, minHeight: 0 }}>
-        <EchartsSlitter top={<CollapseCondition items={items}/>} left={<QueryHorizontalBar />} right={
-        <div style={{ 
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          padding: '20px',
-          boxSizing: 'border-box',
-          gap: '20px'
-        }}>
-          <div style={{ flex: 1, minHeight: 0 }}>
-            <DetailHorizontalBar/>
-          </div>
-          <div style={{ flex: 1, minHeight: 0 }}>
-            <DetailHorizontalBar/>
-          </div>
-        </div>
-      } />
+        <EchartsSlitter 
+          top={<CollapseCondition items={items}/>} 
+          left={<QueryHorizontalBar />} 
+          right={
+            <div style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+              padding: '20px',
+              boxSizing: 'border-box',
+              gap: '20px'
+            }}>
+              <div style={{ flex: 1, minHeight: '250px' }}>  
+                <DetailHorizontalBar/>
+              </div>
+              <div style={{ flex: 1, minHeight: '250px' }}>
+                <DetailHorizontalBar/>
+              </div>
+              <div style={{ flex: 1, minHeight: '250px' }}>
+                <DetailHorizontalBar/>
+              </div>
+              <div style={{ flex: 1, minHeight: '250px' }}>
+                <DetailHorizontalBar/>
+              </div>
+            </div>
+          }
+          pagination={<QueryPagination />}
+        />
       </div>
     </div>
   )
