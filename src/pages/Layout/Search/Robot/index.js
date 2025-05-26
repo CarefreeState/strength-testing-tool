@@ -3,8 +3,12 @@ import EchartsSlitter from '@/components/EchartsSlitter'
 import QueryHorizontalBar from '@/components/QueryHorizontalBar'
 import DetailHorizontalBar from '@/components/DetailHorizontalBar'
 import QueryPagination from '@/components/QueryPagination'
+import LoadingAnimation from '@/components/LoadingAnimation'
+import { useState } from 'react';
+
 
 const Robot = () => {
+  const [loading, setLoading] = useState(false);
   // item: {label, descriptions:[name, content]}
   const items = [
     {
@@ -45,6 +49,7 @@ const Robot = () => {
   ]
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      {loading && <LoadingAnimation/>}
       <div style={{ flex: 1, minHeight: 0 }}>
         <EchartsSlitter 
           top={<CollapseCondition items={items}/>} 

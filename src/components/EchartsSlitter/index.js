@@ -21,7 +21,7 @@ const CustomSplitter = ({left, right, top, ..._a}) => {
     restProps = __rest(_a, ['style']);
   return (
     <Splitter layout="vertical">
-      <Splitter.Panel min="5%" defaultSize="30%">
+      <Splitter.Panel min="1%" defaultSize="30%">
           {top}
       </Splitter.Panel>
       <Splitter.Panel min="70%" defaultSize="70%">

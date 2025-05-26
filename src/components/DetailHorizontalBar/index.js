@@ -126,7 +126,7 @@ const DetailHorizontalBar = () => {
       <div style={{
         position: 'absolute',
         top: 0,
-        right: 10,
+        right: 0,
         zIndex: 10
       }}>
         <OkButton />
