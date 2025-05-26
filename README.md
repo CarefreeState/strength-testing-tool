@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# 创建工程
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+npx create-react-app .
+```
 
-## Available Scripts
+# 目录结构
 
-In the project directory, you can run:
+![1748230157648](image/README/1748230157648.png)
 
-### `npm start`
+# SCSS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+ npm install sass -D
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# AntD
 
-### `npm test`
+```shell
+npm install antd --save
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Router
 
-### `npm run build`
+```shell
+npm i react-router-dom
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Craco
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+# Redux
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```shell
+npm i react-redux @reduxjs/toolkit
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Axios
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```shell
+npm i axios
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# ClassNames
 
-## Learn More
+```shell
+npm i classnames
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Dayjs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```shell
+npm i dayjs
+```
 
-### Code Splitting
+# UUID
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm i uuid
+```
 
-### Analyzing the Bundle Size
+# Lodash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```shell
+npm i lodash
+```
 
-### Making a Progressive Web App
+# Echarts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```shell
+npm i echarts
+```
 
-### Advanced Configuration
+# normalize.css
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```shell
+npm install normalize.css
+```
