@@ -1,0 +1,207 @@
+{
+  // 战斗配置ID
+  "combat_config_id": 1001,
+  // 战斗模式类型
+  "combat_mode_type": 1,
+  // 战斗版本号
+  "combat_version": 0,
+  // 战斗结束时间(毫秒时间戳)
+  "combat_over_time": 1747985740455,
+  // 战斗开始时间(毫秒时间戳)
+  "combat_init_time": 1747985689602,
+  // 战斗持续时间(毫秒)
+  "combat_duration": 50853,
+  // 是否同步战斗
+  "is_sync": true,
+  // 模组ID
+  "mod_id": 4,
+  // 关卡ID
+  "level_id": 1,
+  // 强制结束原因(空表示正常结束)
+  "force_over": "",
+  // 结算类型(1=正常结算)
+  "settlement_type": 1,
+  // 玩家结算数据
+  "settlement_players": {
+    "aDAk7Mdrpv5FFohz": {
+      // 头像框ID
+      "head_frame": 0,
+      // 战斗队长ID
+      "battle_captain_id": 10700,
+      // 是否死亡
+      "is_dead": false,
+      // 击杀者类型
+      "killer_type": -1,
+      // 钻石数量
+      "diamond_num": 11,
+      // 高级能力ID
+      "advanced_power_id": 100011,
+      // 是否是机器人
+      "is_robot": false,
+      // 击杀者GUID
+      "killer_guid": "",
+      // 单位结算数据
+      "settlement_units": {
+        "2329": {
+          // 单位ID
+          "unit_id": 10700,
+          // 对玩家造成伤害(总输出指标)
+          "make_player_damage": 2510.9872283935547,
+          // 承受总伤害
+          "take_damage": 8575.629348754883,
+          // 造成总伤害
+          "make_damage": 2678.3846740722656,
+          // 治疗量(总治疗指标)
+          "make_heal": 0.0,
+          // 承受玩家伤害
+          "take_player_damage": 8225.629348754883,
+          // 重生ID
+          "renew_id": 0,
+          // 装备ID列表
+          "fitness_ids": [],
+          // 六边形ID列表
+          "hex_ids": [10027]
+        }
+        "2963": {
+          "unit_id": 22600,
+          "make_player_damage": 8609.569946289062,
+          "take_damage": 4535.592834472656,
+          "make_damage": 9995.372497558594,
+          "make_heal": 0.0,
+          "take_player_damage": 4235.592834472656,
+          "renew_id": 4322600,
+          "fitness_ids": [],
+          "hex_ids": []
+        }
+        "3208": {
+          "unit_id": 22800,
+          "make_player_damage": 5003.276184082031,
+          "take_damage": 2683.548583984375,
+          "make_damage": 5560.076187133789,
+          "make_heal": 0.0,
+          "take_player_damage": 2433.548583984375,
+          "renew_id": 4322800,
+          "fitness_ids": [],
+          "hex_ids": []
+        }
+      },
+      "is_abstain": false,
+      "player_guid": "aDAk7Mdrpv5FFohz",
+      "faction": 0,
+      "ai_index": 0,
+      "rank": 1,
+      "title": 0,
+      "head": 320020,
+      "group_id": "00000002",
+      "elo_score": 0,
+      "global_rank": 0,
+      "player_name": "娇小的兰斯顿",
+      "gold_statistic": {
+        "0": 0,
+        "10": 0,
+        "20": 0,
+        "30": 0,
+        "40": 8.0,
+        "50": 18.0,
+        "51": 18.0
+      },
+      "ai_template_id": 0,
+      "diamond_statistic": {
+        "0": 0,
+        "10": 0,
+        "20": 0,
+        "30": 0,
+        "40": 0,
+        "50": 5,
+        "51": 11
+      },
+      "relic_ids": [],
+      "advanced_power_dict": {
+        "1": 100011
+      },
+      "titles": [1900]
+    },
+    "aDAk7cdrpv5FFok1": {
+      "head_frame": 0,
+      "battle_captain_id": 11700,
+      "is_dead": true,
+      "killer_type": 0,
+      "diamond_num": 0,
+      "is_robot": false,
+      "killer_guid": "aDAk7Mdrpv5FFohz",
+      "settlement_units": {
+        "2353": {
+          "unit_id": 11700,
+          "make_player_damage": 7294.894088745117,
+          "take_damage": 4950.0,
+          "make_damage": 8672.09408569336,
+          "make_heal": 0.0,
+          "take_player_damage": 4750.0,
+          "renew_id": 0,
+          "fitness_ids": [],
+          "hex_ids": [10036]
+        },
+        "2770": {
+          "unit_id": 22600,
+          "make_player_damage": 17424.11099243164,
+          "take_damage": 3910.0,
+          "make_damage": 17814.11099243164,
+          "make_heal": 0.0,
+          "take_player_damage": 3760.0,
+          "renew_id": 4322600,
+          "fitness_ids": [],
+          "hex_ids": []
+        },
+        "3034": {
+          "unit_id": 22800,
+          "make_player_damage": 5074.047622680664,
+          "take_damage": 4200.0,
+          "make_damage": 6187.64762878418,
+          "make_heal": 0.0,
+          "take_player_damage": 3150.0,
+          "renew_id": 4322800,
+          "fitness_ids": [],
+          "hex_ids": []
+        }
+      },
+      "is_abstain": false,
+      "player_guid": "aDAk7cdrpv5FFok1",
+      "faction": 1,
+      "ai_index": 0,
+      "rank": 2,
+      "title": 0,
+      "head": 320008,
+      "group_id": "00000002",
+      "elo_score": 0,
+      "global_rank": 0,
+      "player_name": "无私的贝塔",
+      "gold_statistic": {
+        "0": 0,
+        "10": 0,
+        "20": 0,
+        "30": 0,
+        "40": 0,
+        "50": 8.0
+      },
+      "ai_template_id": 0,
+      "diamond_statistic": {
+        "0": 0,
+        "10": 0,
+        "20": 0,
+        "30": 0,
+        "40": 0,
+        "50": 6
+      },
+      "relic_ids": [100007, 100008],
+      "advanced_power_dict": {},
+      "titles": [],
+      "advanced_power_id": 0
+    }
+  },
+  // 战斗绑定数据
+  "combat_bind_data": {},
+  // 战斗唯一标识
+  "combat_uuid": "aDAlBcdrpv5Ef97P",
+  // 战斗来源类型
+  "combat_from_type": 2
+}

@@ -81,7 +81,7 @@ const Robot = () => {
               <DetailHorizontalBar/>
               <DetailHorizontalBar/>
               {/* <DetailHorizontalBar/> */}
-              {/* <DetailHorizontalBar/> */}
+              <DetailHorizontalBar/>
             </div>
           }
           pagination={<QueryPagination />}

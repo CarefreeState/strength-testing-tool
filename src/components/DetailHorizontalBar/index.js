@@ -35,7 +35,7 @@ const DetailHorizontalBar = () => {
         }
       },
       legend: {
-        data: ['Profit', 'Expenses', 'Income']
+        data: ['Profit', 'Expenses']
       },
       grid: {
         left: '3%',
@@ -70,18 +70,7 @@ const DetailHorizontalBar = () => {
           },
           data: [200, 170, 240, 244, 200, 220, 210]
         },
-        {
-          name: 'Income',
-          type: 'bar',
-          stack: 'Total',
-          label: {
-            show: true
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          data: [320, 302, 341, 374, 390, 450, 420]
-        },
+
         {
           name: 'Expenses',
           type: 'bar',
