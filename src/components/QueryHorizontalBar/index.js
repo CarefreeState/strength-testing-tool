@@ -8,6 +8,7 @@ import {
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import QueryPagination from '@/components/QueryPagination'
+import SearchButton from '@/components/SearchButton'
 
 echarts.use([
   TitleComponent,
@@ -17,7 +18,7 @@ echarts.use([
   CanvasRenderer
 ]);
 
-const QueryHorizontalBar = () => {
+const QueryHorizontalBar = ({setLoading}) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -157,8 +158,10 @@ const QueryHorizontalBar = () => {
         height: '5%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        gap: '20px'
       }}>
+        <SearchButton onClick={() => setLoading(true)} />
         <QueryPagination />
       </div>
     </div>

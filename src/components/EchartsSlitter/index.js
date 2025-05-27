@@ -21,18 +21,18 @@ const CustomSplitter = ({left, right, top, ..._a}) => {
     restProps = __rest(_a, ['style']);
   return (
     <Splitter layout="vertical">
-      <Splitter.Panel min="1%" defaultSize="30%">
+      <Splitter.Panel min="1%" defaultSize="35%">
           {top}
       </Splitter.Panel>
-      <Splitter.Panel min="70%" defaultSize="70%">
+      <Splitter.Panel min="30%" defaultSize="65%">
         <Splitter
           style={Object.assign({ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }, style)}
           {...restProps}
         >
-          <Splitter.Panel collapsible min="20%" defaultSize="70%">  
+          <Splitter.Panel collapsible min="30%" defaultSize="70%">  
             {left}
           </Splitter.Panel>
-          <Splitter.Panel collapsible min="20%" defaultSize="30%">  
+          <Splitter.Panel collapsible min="30%" defaultSize="30%">  
             {right}
           </Splitter.Panel>
         </Splitter>

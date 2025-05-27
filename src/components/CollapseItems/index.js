@@ -4,9 +4,11 @@ import { Collapse } from 'antd';
 import DescriptionList from '@/components/DescriptionList'
 
 
-// item: {label, descriptions:[name, content]}
-const CollapseCondition = ({items}) => {
-  return (<Collapse defaultActiveKey={items.map((item, index) => index)} ghost items={items.map((item, index) => {
+// item: {active, label, vertical, cardinality, descriptions:[name, content]}
+const CollapseItems = ({items}) => {
+  return (<Collapse collapsible="header" defaultActiveKey={items.map((item, index) => {
+    return item.active ? index : null
+  })} ghost items={items.map((item, index) => {
     return {
       key: index,
       label: <strong>{item.label}</strong>,
@@ -14,4 +16,4 @@ const CollapseCondition = ({items}) => {
     }})} />)
 }
 
-export default CollapseCondition
+export default CollapseItems

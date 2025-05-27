@@ -11,7 +11,7 @@ function DescriptionList({descriptions, vertical, cardinality}) {
           label: item.name,
           children: item.content,
       }})}
-      column={descriptions.length * cardinality} // Controls maximum items per row
+      column={Math.ceil(descriptions.length * cardinality)} // Controls maximum items per row
       styles={{
         label: {
           display: 'inline-block',

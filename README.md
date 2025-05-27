@@ -79,3 +79,10 @@ npm i echarts
 ```shell
 npm install normalize.css
 ```
+
+# antd-style moment
+
+```shell
+npm i antd-style
+npm install moment
+```
