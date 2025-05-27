@@ -1,0 +1,50 @@
+{
+  "time_range": {
+    "start": 0,
+    "end": 0
+  },
+  "team_data": {
+    "captain": {
+      "id": 1,
+      "is_fuzzy": false
+    },
+    "captain_talent": {
+      "id": 1,
+      "is_fuzzy": true
+    },
+    "minions": {
+      "count": 0,
+      "ids": [1],
+      "is_fuzzy": false
+    },
+    "trainings": {
+      "ids": [1],
+      "is_fuzzy": true
+    },
+    "relics": {
+      "ids": [1],
+      "is_fuzzy": true
+    },
+    "evolutions": {
+      "ids": [1],
+      "is_fuzzy": true
+    },
+    "equipments": {
+      "ids": [1],
+      "is_fuzzy": true
+    }
+  },
+  "metrics": {
+    "avg_damage": 0,
+    "avg_heal": 0,
+    "win_rate": 0,
+    "avg_duration": 0
+  },
+  "detailed_data": [
+    {
+      "unit_id": 1,
+      "avg_damage": 0,
+      "avg_heal": 0
+    }
+  ]
+}

@@ -5,10 +5,10 @@ import { Cascader, InputNumber, Select, Space } from 'antd';
 const { Option } = Select;
 
 const selectBefore = (
-  <Select defaultValue="eq" style={{ width: 100 }}>
-    <Option value="le">小于等于</Option>
-    <Option value="eq">等于</Option>
-    <Option value="ge">大于等于</Option>
+  <Select defaultValue="eq" style={{ width: 75 }}>
+    <Option value="le">≤</Option>
+    <Option value="eq">=</Option>
+    <Option value="ge">≥</Option>
   </Select>
 );
 

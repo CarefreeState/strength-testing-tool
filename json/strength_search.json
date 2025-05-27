@@ -1,0 +1,48 @@
+{
+  "query": {
+    "filter_conditions": {
+      "enable": true,
+      "time_range": {
+        "start": 0,
+        "end": 0
+      },
+      "captain": {
+        "id": 1,
+        "talent": 1
+      },
+      "minions": {
+        "condition": {
+          "operator": "ge",
+          "value": 0
+        },
+        "ids": [1]
+      },
+      "trainings": [1],
+      "relics": [1],
+      "evolutions": [1],
+      "equipments": [1]
+    },
+    "fuzzy_conditions": {
+      "enable": true,
+      "captain": false,
+      "captain_talent": true,
+      "minions": false,
+      "trainings": true,
+      "relics": true,
+      "evolutions": true,
+      "equipments": true
+    }
+  },
+  
+  "sort": {
+    "active": "win_rate",
+    "win_rate": "desc",
+    "damage": "desc",
+    "heal": "desc",
+    "duration": "asc"
+  },
+  "pagination": {
+    "current": 1,
+    "size": 10
+  }
+}
