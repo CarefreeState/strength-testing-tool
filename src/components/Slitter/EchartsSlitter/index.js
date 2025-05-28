@@ -1,5 +1,6 @@
 import React from 'react';
-import { Flex, Splitter, Typography } from 'antd';
+import { Flex, Splitter } from 'antd';
+import './index.scss';
 
 const __rest =
   (this && this.__rest) ||
@@ -20,12 +21,13 @@ const CustomSplitter = ({left, right, top, ..._a}) => {
   var { style } = _a,
     restProps = __rest(_a, ['style']);
   return (
-    <Splitter layout="vertical">
+    <Splitter layout="vertical" className="custom-splitter">
       <Splitter.Panel min="1%" defaultSize="35%">
           {top}
       </Splitter.Panel>
       <Splitter.Panel min="30%" defaultSize="65%">
         <Splitter
+          className="custom-splitter"
           style={Object.assign({ boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }, style)}
           {...restProps}
         >

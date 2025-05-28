@@ -8,6 +8,7 @@ import { Breadcrumb, Layout, Menu, theme, Image, Typography } from 'antd';
 import { Outlet, useLocation } from 'react-router-dom';
 import bytedanceLogo from '@/assets/bytedance.png';
 import './index.scss';
+import {ConfigProvider} from 'antd';
 
 const { Content, Sider } = Layout;
 const { Title } = Typography;
@@ -37,6 +38,11 @@ const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  // 自定义主题 token
+  const overrideToken = {
+    colorPrimary: '#76E0D6', // 设置选中菜单项的颜色
+  };
 
   // 修复导航点击问题
   const handleMenuClick = (e) => {
@@ -84,14 +90,22 @@ const App = () => {
           <Image src={bytedanceLogo} preview={false} width={collapsed ? 32 : 64} />
           {!collapsed && <Title level={4} style={{ color: 'white', margin: 0 }}>强度测试工具</Title>}
         </div>
-        <Menu 
-          theme="dark" 
-          selectedKeys={[currentPath]}  // 使用修正后的路径
-          defaultOpenKeys={['/search']}  // 强制展开/search菜单
-          mode="inline" 
-          items={items} 
-          onClick={handleMenuClick}
-        />
+        <ConfigProvider
+          theme={{
+            token: {
+              ...overrideToken,
+            },
+          }}
+        >
+          <Menu 
+            theme="dark" 
+            selectedKeys={[currentPath]}  // 使用修正后的路径
+            defaultOpenKeys={['/search']}  // 强制展开/search菜单
+            mode="inline" 
+            items={items} 
+            onClick={handleMenuClick}
+          />
+        </ConfigProvider>
       </Sider>
 
       <Layout>

@@ -12,7 +12,7 @@ const NotFound = () => {
     status="404"
     title="404"
     subTitle="抱歉，你访问的页面不存在"
-    extra={<Button type="primary" onClick={handleClick}>回到主页</Button>}
+    extra={<Button type="primary" onClick={handleClick} >回到主页</Button>}
   />
 }
 

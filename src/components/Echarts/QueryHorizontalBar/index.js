@@ -7,8 +7,8 @@ import {
 } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
-import QueryPagination from '@/components/QueryPagination'
-import SearchButton from '@/components/SearchButton'
+import QueryPagination from '@/components/Pagination/QueryPagination'
+import SearchButton from '@/components/Button/SearchButton'
 
 echarts.use([
   TitleComponent,
@@ -25,10 +25,22 @@ const QueryHorizontalBar = ({setLoading}) => {
   useEffect(() => {
     const chartDom = chartRef.current;
     chartInstance.current = echarts.init(chartDom);
-    const labelRight = {
-      position: 'right'
+    const labelRight = { position: 'right' };
+    const labelInside = { position: 'inside' };
+
+    // 生成15条测试数据
+    const yAxisData = Array.from({length: 15}, (_, i) => `测试项目${i+1}`);
+    const dataValues = Array.from({length: 15}, () => Math.floor(Math.random() * 100));
+
+    const generateData = () => {
+      const maxValue = Math.max(...dataValues);
+      console.log(maxValue)
+      return dataValues.map((value) => ({
+        value,
+        label: value < maxValue * 0.5 ? labelRight : labelInside
+      }));
     };
-    // 初始化图表
+
     const option = {
       title: {
         text: 'Bar Chart with Negative ValueEE',
@@ -62,32 +74,7 @@ const QueryHorizontalBar = ({setLoading}) => {
         axisLabel: { show: false },
         axisTick: { show: false },
         splitLine: { show: false },
-        data: [
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'ten',
-          'nine',
-          'eight',
-          'sevensevensevensevensevensevensevenseven',
-          'six',
-          '阵容：E 1, 2, 3, 4, 5 进修：O阵容：E 1, 2, 3, 4, 5 进修：O',
-          'four',
-          'three',
-          'two',
-          'one'
-        ]
+        data: yAxisData
       },
       series: [
         {
@@ -98,31 +85,10 @@ const QueryHorizontalBar = ({setLoading}) => {
             show: true,
             formatter: '{b}'
           },
-          data: [
-            2,
-            8,
-            { value: 91, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 9, label: labelRight },
-            { value: 10, label: labelRight },
-            { value: 13, label: labelRight },
-            { value: 17, label: labelRight },
-            { value: 20, label: labelRight },
-            { value: 36, label: labelRight },
-            44,
-            { value: 47, label: labelRight }
-          ]
+          itemStyle: {
+            color: '#2D59C6' // 设置柱子颜色为主题色
+          },
+          data: generateData()
         }
       ]
     };
@@ -151,7 +117,7 @@ const QueryHorizontalBar = ({setLoading}) => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div style={{ flex: 1, minWidth: '750px', minHeight: '750px', position: 'relative', width: '100%', height: '100%' }}>
       <div ref={chartRef} style={{ width: '100%', height: '95%' }} />
       <div style={{ 
         width: '100%', 

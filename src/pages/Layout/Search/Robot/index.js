@@ -1,16 +1,16 @@
-import CollapseItems from '@/components/CollapseItems'
-import EchartsSlitter from '@/components/EchartsSlitter'
-import QueryHorizontalBar from '@/components/QueryHorizontalBar'
-import DetailHorizontalBar from '@/components/DetailHorizontalBar'
-import QueryPagination from '@/components/QueryPagination'
-import LoadingAnimation from '@/components/LoadingAnimation'
-import SwitchButton from '@/components/SwitchButton'
+import CollapseItems from '@/components/Collapse/CollapseItems'
+import EchartsSlitter from '@/components/Slitter/EchartsSlitter'
+import QueryHorizontalBar from '@/components/Echarts/QueryHorizontalBar'
+import DetailHorizontalBar from '@/components/Echarts/DetailHorizontalBar'
+import QueryPagination from '@/components/Pagination/QueryPagination'
+import LoadingAnimation from '@/components/Loading/LoadingAnimation'
+import SwitchButton from '@/components/Button/SwitchButton'
 import { useState } from 'react';
-import SimpleCheckbox from '@/components/SimpleCheckbox'
-import LimitSelector from '@/components/LimitSelector'
-import NumberSelector from '@/components/NumberSelector'
-import PrettyButton from '@/components/PrettyButton'
-import DateTimeSelector from '@/components/DateTimeSelector'
+import SimpleCheckbox from '@/components/Button/SimpleCheckbox'
+import LimitSelector from '@/components/Selector/LimitSelector'
+import NumberSelector from '@/components/Selector/NumberSelector'
+import PrettyButton from '@/components/Button/PrettyButton'
+import DateTimeSelector from '@/components/Selector/DateTimeSelector'
 
 const Robot = () => {
   const [loading, setLoading] = useState(false);
@@ -67,7 +67,7 @@ const Robot = () => {
       {loading && <LoadingAnimation/>}
       <div style={{ flex: 1, minHeight: 0 }}>
         <EchartsSlitter 
-          top={<CollapseItems items={items}/>} 
+          top={<CollapseItems style={{ flex: 1, minWidth: '1750px'}} items={items}/>} 
           left={<QueryHorizontalBar setLoading={setLoading} />} 
           right={
             <div style={{ 

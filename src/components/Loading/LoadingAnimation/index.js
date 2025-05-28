@@ -1,5 +1,5 @@
 import * as echarts from 'echarts';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const LoadingAnimation = () => {
   useEffect(() => {
@@ -9,7 +9,7 @@ const LoadingAnimation = () => {
     document.getElementById('loading-container').appendChild(chartDom);
     
     const myChart = echarts.init(chartDom);
-    const styles = ['#294F92', '#4272AA', '#1EA5AD', '#7BBCB9'];
+    const styles = ['#2D59C6', '#318EDE', '#26CDD5', '#76E0D6'];
     const ys = [-40, -15, -25, -45];
     const heights = [52, 30, 30, 60];
 
@@ -88,7 +88,7 @@ const LoadingAnimation = () => {
         zIndex: 9999
       }}
     >
-      <div style={{ marginTop: '20px', color: '#294F92', fontSize: '16px' }}>加载中...</div>
+      <div style={{ marginTop: '20px', color: '#2D59C6', fontSize: '16px' }}>加载中...</div>
     </div>
   );
 };

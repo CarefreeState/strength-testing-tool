@@ -1,4 +1,4 @@
-import EmptyContent from '@/components/EmptyContent'
+import EmptyContent from '@/components/Empty/EmptyContent'
 
 const Overseas = () => {
   return (

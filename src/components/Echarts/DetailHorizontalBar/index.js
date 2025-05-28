@@ -7,8 +7,8 @@ import {
 } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
-import OkButton from '@/components/OkButton';
-import CollapseItems from '@/components/CollapseItems'
+import OkButton from '@/components/Button/OkButton';
+import CollapseItems from '@/components/Collapse/CollapseItems'
 
 echarts.use([
   TooltipComponent,
@@ -35,7 +35,7 @@ const DetailHorizontalBar = () => {
         }
       },
       legend: {
-        data: ['Profit', 'Expenses', 'Income']
+        data: ['指标1', '指标2']
       },
       grid: {
         left: '3%',
@@ -59,7 +59,7 @@ const DetailHorizontalBar = () => {
       ],
       series: [
         {
-          name: 'Profit',
+          name: '指标1',
           type: 'bar',
           label: {
             show: true,
@@ -68,10 +68,13 @@ const DetailHorizontalBar = () => {
           emphasis: {
             focus: 'series'
           },
-          data: [200, 170, 240, 244, 200, 220, 210]
+          itemStyle: {
+            color: '#2D59C6'
+          },
+          data: [150, 180, 220, 250, 230, 270, 260]
         },
         {
-          name: 'Income',
+          name: '指标2',
           type: 'bar',
           stack: 'Total',
           label: {
@@ -80,20 +83,10 @@ const DetailHorizontalBar = () => {
           emphasis: {
             focus: 'series'
           },
-          data: [320, 302, 341, 374, 390, 450, 420]
-        },
-        {
-          name: 'Expenses',
-          type: 'bar',
-          stack: 'Total',
-          label: {
-            show: true,
-            position: 'left'
+          itemStyle: {
+            color: '#76E0D6'
           },
-          emphasis: {
-            focus: 'series'
-          },
-          data: [-120, -132, -101, -134, -190, -230, -210]
+          data: [120, 140, 160, 190, 170, 210, 200]
         }
       ]
     };
@@ -128,7 +121,7 @@ const DetailHorizontalBar = () => {
         flexDirection: 'column',
         flex: '0 0 auto'  // 关键修改：固定高度
       }}>  
-        <CollapseItems items={[
+        <CollapseItems style={{ flex: 1, minWidth: '500px'}} items={[
           {
             active: false,
             label: '详情',
@@ -144,7 +137,7 @@ const DetailHorizontalBar = () => {
           }
         ]}/>
       </div>
-      <div style={{ flex: 1, minHeight: '250px' }}><div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div style={{ flex: 1, minWidth: '500px', minHeight: '250px' }}><div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <div ref={chartRef} style={{ width: '100%', height: '100%' }} />
         <div style={{
           position: 'absolute',
