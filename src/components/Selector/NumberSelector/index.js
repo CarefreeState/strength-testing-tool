@@ -1,6 +1,5 @@
 import React from 'react';
-import { SettingOutlined } from '@ant-design/icons';
-import { Cascader, InputNumber, Select, Space } from 'antd';
+import { InputNumber, Select, Space } from 'antd';
 
 const { Option } = Select;
 
@@ -12,9 +11,9 @@ const selectBefore = (
   </Select>
 );
 
-const NumberSelector = () => (
+const NumberSelector = ({min, max}) => (
   <Space direction="vertical">
-    <InputNumber addonBefore={selectBefore} defaultValue={3} />
+    <InputNumber max={max} min={min} addonBefore={selectBefore} defaultValue={3} />
   </Space>
 );
 

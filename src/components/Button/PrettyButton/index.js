@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Button, ConfigProvider, Space } from 'antd';
 import { createStyles } from 'antd-style';
 import sortAsc from '@/assets/sort-asc.png'; // 请确保路径正确
@@ -13,7 +12,7 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
 
       &::before {
         content: '';
-        background: linear-gradient(135deg, #2D59C6, #76E0D6);
+        background: linear-gradient(135deg, #2D59C6, #318EDE, #26CDD5,  #76E0D6);
         position: absolute;
         inset: -1px;
         opacity: 1;
@@ -22,7 +21,7 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
       }
 
       &.clicked-reversed::before {
-        background: linear-gradient(315deg, #2D59C6, #76E0D6);
+        background: linear-gradient(315deg,  #2D59C6, #318EDE, #26CDD5,  #76E0D6);
       }
     }
   `,
