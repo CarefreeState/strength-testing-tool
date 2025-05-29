@@ -14,7 +14,30 @@ import DateTimeSelector from '@/components/Selector/DateTimeSelector'
 
 const Robot = () => {
   const [loading, setLoading] = useState(false);
+  const [prettyButtons, setPrettyButtons] =useState([
+    {
+      label: '胜率',
+      sort: 'asc',
+      active: true
+    },
+    {
+      label: '总治疗',
+      sort: 'desc',
+      active: false
+    },
+    {
+      label: '总输出',
+      sort: 'desc',
+      active: false
+    },
+    {
+      label: '战斗时长',
+      sort: 'desc',
+      active: false
+    },
+  ])
   // item: {label, descriptions:[name, content]}
+  
   const items = [
     {
       active: true,
@@ -54,12 +77,27 @@ const Robot = () => {
       vertical: false,
       label: '输出条件',
       cardinality: 2,
-      descriptions: [
-        {content: <PrettyButton>胜率</PrettyButton>},
-        {content: <PrettyButton>总治疗</PrettyButton>},
-        {content: <PrettyButton>总输出</PrettyButton>},
-        {content: <PrettyButton>战斗时长</PrettyButton>},
-      ]
+      descriptions: prettyButtons.map((item, index) => {
+        return {
+          content: <PrettyButton
+            sort={item.sort}
+            active={item.active}
+            onClick={() => {
+              setPrettyButtons(prettyButtons.map((button, i) => {
+                if(i === index) 
+                  if(button.active === true) {
+                    button.sort = button.sort === 'desc' ? 'asc' : 'desc';
+                  }else {
+                    button.active = true;
+                  }
+                else 
+                  button.active = false;
+                return button;
+              }))
+            }}
+          >{item.label}</PrettyButton>
+        }  
+      })
     }
   ]
   return (

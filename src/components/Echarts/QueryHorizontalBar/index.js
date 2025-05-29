@@ -34,7 +34,6 @@ const QueryHorizontalBar = ({setLoading}) => {
 
     const generateData = () => {
       const maxValue = Math.max(...dataValues);
-      console.log(maxValue)
       return dataValues.map((value) => ({
         value,
         label: value < maxValue * 0.5 ? labelRight : labelInside
@@ -127,7 +126,17 @@ const QueryHorizontalBar = ({setLoading}) => {
         alignItems: 'center',
         gap: '20px'
       }}>
-        <SearchButton onClick={() => setLoading(true)} />
+        <SearchButton 
+          onClick={() => setLoading(true)} 
+          buttonTheme={{
+            defaultBg: '#26CDD5',
+            defaultBorderColor: '#26CDD5',
+            defaultColor: '#ffffff',
+            defaultHoverBg: '#76E0D6',
+            defaultHoverBorderColor: '#76E0D6',
+            defaultHoverColor: '#ffffff',
+          }}      
+        />
         <QueryPagination />
       </div>
     </div>

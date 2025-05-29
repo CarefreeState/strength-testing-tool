@@ -1,11 +1,22 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-const SearchButton = ({onClick}) => {
+import { ConfigProvider } from 'antd';
 
+const SearchButton = ({ onClick, buttonTheme}) => {
   return (
-    <Button onClick={onClick} type="primary" icon={<SearchOutlined />} iconPosition='end'>
-      Search
-    </Button>
-  )
+    <ConfigProvider theme={{
+      components: {
+        Button: buttonTheme
+      }
+    }}>
+      <Button 
+        onClick={onClick} 
+        icon={<SearchOutlined />} 
+        iconPosition='end'
+      >
+        Search
+      </Button>
+    </ConfigProvider>
+  );
 };
 export default SearchButton;

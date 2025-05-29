@@ -28,38 +28,32 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
   `,
 }));
 
-const PrettyButton = ({ children }) => {
+const PrettyButton = ({ children, sort, active, onClick }) => {
   const { styles } = useStyle();
-  const [isReversed, setIsReversed] = useState(false);
 
-  const handleClick = () => {
-    setIsReversed(!isReversed);
-  };
-
-  // 定义图标样式
   const iconStyle = {
-    width: '24px', 
-    height: '24px' 
+    width: '24px',
+    height: '24px'
   };
 
-  const icon = isReversed ? (
-    <img src={sortDesc} alt="sort-desc" style={iconStyle} />
-  ) : (
+  const icon = sort === 'asc' ? (
     <img src={sortAsc} alt="sort-asc" style={iconStyle} />
+  ) : (
+    <img src={sortDesc} alt="sort-desc" style={iconStyle} />
   );
 
   return (
     <ConfigProvider
       button={{
-        className: `${styles.linearGradientButton} ${isReversed ? 'clicked-reversed' : ''}`,
+        className: `${styles.linearGradientButton} ${active ? (sort === 'desc' ? 'clicked-reversed' : '') : ''}`,
       }}
     >
       <Space>
         <Button
-          type="primary"
+          type={active ? 'primary' : 'default'}
           size="large"
           icon={icon}
-          onClick={handleClick}
+          onClick={onClick}
         >
           {children}
         </Button>
