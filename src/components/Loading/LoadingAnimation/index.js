@@ -49,12 +49,16 @@ const LoadingAnimation = () => {
               shape: { points: getPoints(i) },
               style: { fill: styles[i] },
               keyframeAnimation: {
-                duration: 1000,
+                duration: 1000,  // 总周期1秒
                 delay: i * 200,
                 loop: true,
                 keyframes: [
-                  { percent: 0.5, scaleY: 0.3, easing: 'cubicIn' },
-                  { percent: 1, scaleY: 1, easing: 'cubicOut' }
+                  { percent: 0, scaleY: 1, easing: 'linear' },  // 起始状态
+                  { percent: 0.1, scaleY: 1, easing: 'linear' }, // 最高点定格0.1秒
+                  { percent: 0.4, scaleY: 0.3, easing: 'cubicIn' },  // 压缩阶段
+                  { percent: 0.7, scaleY: 0.3, easing: 'linear' },   // 保持压缩状态
+                  { percent: 0.9, scaleY: 1, easing: 'cubicOut' },    // 恢复阶段
+                  { percent: 1, scaleY: 1, easing: 'linear' }        // 回到最高点
                 ]
               }
             }))
@@ -88,36 +92,23 @@ const LoadingAnimation = () => {
         zIndex: 9999
       }}
     >
-      <div style={{ marginTop: '20px', fontSize: '16px', color: '#2D59C6' }}>
-        <span style={{ animation: 'colorChange 0.8s 0s infinite' }}>加</span>
-        <span style={{ animation: 'colorChange 0.8s 0.16s infinite' }}>载</span>
-        <span style={{ animation: 'colorChange 0.8s 0.32s infinite' }}>中</span>
-        <span style={{ animation: 'colorChange 0.8s 0.48s infinite' }}>.</span>
-        <span style={{ animation: 'colorChange 0.8s 0.64s infinite' }}>.</span>
-        <span style={{ animation: 'colorChange 0.8s 0.8s infinite' }}>.</span>
+      <div style={{ marginTop: '20px', fontSize: '16px' }}>
+        <span style={{
+          background: 'linear-gradient(90deg, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE, #2D59C6, #318EDE, #26CDD5, #76E0D6, #26CDD5, #318EDE)',
+          backgroundSize: '400% 100%',
+          animation: 'gradientFlow 1s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent',
+          display: 'inline-block'
+        }}>
+          加载中...
+        </span>
       </div>
       <style>
         {`
-          @keyframes colorChange {
-            0% { color: #2D59C6; }
-            5.88% { color: #318EDE; }
-            11.76% { color: #26CDD5; }
-            17.65% { color: #76E0D6; }
-            23.53% { color: #26CDD5; }
-            29.41% { color: #318EDE; }
-            35.29% { color: #2D59C6; }
-            41.18% { color: #318EDE; }
-            47.06% { color: #26CDD5; }
-            52.94% { color: #76E0D6; }
-            58.82% { color: #26CDD5; }
-            64.71% { color: #318EDE; }
-            70.59% { color: #2D59C6; }
-            76.47% { color: #318EDE; }
-            82.35% { color: #26CDD5; }
-            88.24% { color: #76E0D6; }
-            84.21% { color: #26CDD5; }
-            94.12% { color: #318EDE; }
-            100% { color: #2D59C6; }
+          @keyframes gradientFlow {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
           }
         `}
       </style>

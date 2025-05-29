@@ -8,12 +8,17 @@ const Combat = lazy(() => import("@/pages/Layout/Combat"))
 const Domestic = lazy(() => import("@/pages/Layout/Search/Domestic"))
 const Overseas = lazy(() => import("@/pages/Layout/Search/Overseas"))
 const Robot = lazy(() => import("@/pages/Layout/Search/Robot"))
+const LoadingAnimation = lazy(() => import("@/components/Loading/LoadingAnimation"))
 
 const router = createHashRouter([
   {
     path: "/",
     element: <Suspense><Layout /></Suspense>,
     children: [
+      {
+        path: "/loading",
+        element: <Suspense><LoadingAnimation /></Suspense>,
+      },
       {
         path: "/combat",
         element: <Suspense><Combat /></Suspense>,
