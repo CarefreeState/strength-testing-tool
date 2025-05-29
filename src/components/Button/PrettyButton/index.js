@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Space } from 'antd';
+import { Button, ConfigProvider } from 'antd';
 import { createStyles } from 'antd-style';
 import sortAsc from '@/assets/sort-asc.png'; // 请确保路径正确
 import sortDesc from '@/assets/sort-desc.png'; // 请确保路径正确
@@ -47,16 +47,14 @@ const PrettyButton = ({ children, sort, active, onClick }) => {
         className: `${styles.linearGradientButton} ${active ? (sort === 'desc' ? 'clicked-reversed' : '') : ''}`,
       }}
     >
-      <Space>
-        <Button
-          type={active ? 'primary' : 'default'}
-          size="large"
-          icon={icon}
-          onClick={onClick}
-        >
-          {children}
-        </Button>
-      </Space>
+      <Button
+        type={active ? 'primary' : 'default'}
+        size="large"
+        icon={icon}
+        onClick={onClick}
+      >
+        {children}
+      </Button>
     </ConfigProvider>
   );
 };

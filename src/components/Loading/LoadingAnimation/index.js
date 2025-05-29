@@ -88,7 +88,39 @@ const LoadingAnimation = () => {
         zIndex: 9999
       }}
     >
-      <div style={{ marginTop: '20px', color: '#2D59C6', fontSize: '16px' }}>加载中...</div>
+      <div style={{ marginTop: '20px', fontSize: '16px', color: '#2D59C6' }}>
+        <span style={{ animation: 'colorChange 0.8s 0s infinite' }}>加</span>
+        <span style={{ animation: 'colorChange 0.8s 0.16s infinite' }}>载</span>
+        <span style={{ animation: 'colorChange 0.8s 0.32s infinite' }}>中</span>
+        <span style={{ animation: 'colorChange 0.8s 0.48s infinite' }}>.</span>
+        <span style={{ animation: 'colorChange 0.8s 0.64s infinite' }}>.</span>
+        <span style={{ animation: 'colorChange 0.8s 0.8s infinite' }}>.</span>
+      </div>
+      <style>
+        {`
+          @keyframes colorChange {
+            0% { color: #2D59C6; }
+            5.88% { color: #318EDE; }
+            11.76% { color: #26CDD5; }
+            17.65% { color: #76E0D6; }
+            23.53% { color: #26CDD5; }
+            29.41% { color: #318EDE; }
+            35.29% { color: #2D59C6; }
+            41.18% { color: #318EDE; }
+            47.06% { color: #26CDD5; }
+            52.94% { color: #76E0D6; }
+            58.82% { color: #26CDD5; }
+            64.71% { color: #318EDE; }
+            70.59% { color: #2D59C6; }
+            76.47% { color: #318EDE; }
+            82.35% { color: #26CDD5; }
+            88.24% { color: #76E0D6; }
+            84.21% { color: #26CDD5; }
+            94.12% { color: #318EDE; }
+            100% { color: #2D59C6; }
+          }
+        `}
+      </style>
     </div>
   );
 };
