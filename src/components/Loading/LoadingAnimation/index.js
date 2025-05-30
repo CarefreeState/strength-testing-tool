@@ -1,7 +1,8 @@
 import * as echarts from 'echarts';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const LoadingAnimation = () => {
+  const [loadingTime, setLoadingTime] = useState(0);
   useEffect(() => {
     const chartDom = document.createElement('div');
     chartDom.style.width = '100px';
@@ -67,10 +68,16 @@ const LoadingAnimation = () => {
       }
     };
 
+    const startTime = Date.now();
+    const timer = setInterval(() => {
+      setLoadingTime(((Date.now() - startTime) / 1000).toFixed(1));
+    }, 100);
     myChart.setOption(option);
+
     return () => {
       myChart.dispose();
       chartDom.remove();
+      clearInterval(timer);
     };
   }, []);
 
@@ -101,7 +108,7 @@ const LoadingAnimation = () => {
           color: 'transparent',
           display: 'inline-block'
         }}>
-          加载中...
+          Loading... ({loadingTime}s)
         </span>
       </div>
       <style>

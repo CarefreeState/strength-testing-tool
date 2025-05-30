@@ -1,242 +1,1201 @@
-{
-  // 战斗配置ID
-  "combat_config_id": 1001,
-  // 战斗模式类型
-  "combat_mode_type": 1,
-  // 战斗版本号
-  "combat_version": 0,
-  // 战斗结束时间(毫秒时间戳)
-  "combat_over_time": 1747985740455,
-  // 战斗开始时间(毫秒时间戳)
-  "combat_init_time": 1747985689602,
-  // 战斗持续时间(毫秒)
-  "combat_duration": 50853,
-  // 是否同步战斗
-  "is_sync": true,
-  // 模组ID
-  "mod_id": 4,
-  // 关卡ID
-  "level_id": 1,
-  // 强制结束原因(空表示正常结束)
-  "force_over": "",
-  // 结算类型(1=正常结算)
-  "settlement_type": 1,
-  // 玩家结算数据
-  "settlement_players": {
-    "aDAk7Mdrpv5FFohz": {
-      // 头像框ID
-      "head_frame": 0,
-      // 战斗队长ID
-      "battle_captain_id": 10700,
-      // 是否死亡
-      "is_dead": false,
-      // 击杀者类型
-      "killer_type": -1,
-      // 钻石数量
-      "diamond_num": 11,
-      // 高级能力ID
-      "advanced_power_id": 100011,
-      // 是否是机器人
-      "is_robot": false,
-      // 击杀者GUID
-      "killer_guid": "",
-      // 单位结算数据
-      "settlement_units": {
-        "2329": {
-          // 单位ID
-          "unit_id": 10700,
-          // 对玩家造成伤害(总输出指标)
-          "make_player_damage": 2510.9872283935547,
-          // 承受总伤害
-          "take_damage": 8575.629348754883,
-          // 造成总伤害
-          "make_damage": 2678.3846740722656,
-          // 治疗量(总治疗指标)
-          "make_heal": 0.0,
-          // 承受玩家伤害
-          "take_player_damage": 8225.629348754883,
-          // 重生ID
-          "renew_id": 0,
-          // 装备ID列表
-          "fitness_ids": [],
-          // 六边形ID列表
-          "hex_ids": [10027]
-        },
-        "2963": {
-          // 单位ID
-          "unit_id": 22600,
-          // 对玩家造成伤害
-          "make_player_damage": 8609.569946289062,
-          // 承受总伤害
-          "take_damage": 4535.592834472656,
-          // 造成总伤害
-          "make_damage": 9995.372497558594,
-          // 治疗量
-          "make_heal": 0.0,
-          // 承受玩家伤害
-          "take_player_damage": 4235.592834472656,
-          // 重生ID
-          "renew_id": 4322600,
-          // 装备ID列表
-          "fitness_ids": [],
-          // 六边形ID列表
-          "hex_ids": []
-        },
-        "3208": {
-          // 单位ID
-          "unit_id": 22800,
-          // 对玩家造成伤害
-          "make_player_damage": 5003.276184082031,
-          // 承受总伤害
-          "take_damage": 2683.548583984375,
-          // 造成总伤害
-          "make_damage": 5560.076187133789,
-          // 治疗量
-          "make_heal": 0.0,
-          // 承受玩家伤害
-          "take_player_damage": 2433.548583984375,
-          // 重生ID
-          "renew_id": 4322800,
-          // 装备ID列表
-          "fitness_ids": [],
-          // 六边形ID列表
-          "hex_ids": []
-        }
+[
+  {
+      "combat_bind_data": {},
+      "settlement_players": {
+          "aDk_QneSQL3OMO7j": {
+              "settlement_units": {
+                  "3254": {
+                      "hex_ids": [
+                          10039
+                      ],
+                      "fitness_ids": [
+                          101003
+                      ],
+                      "take_player_damage": 15085.20230102539,
+                      "take_damage": 17525.20230102539,
+                      "make_player_damage": 25516.67140197754,
+                      "make_heal": 0.0,
+                      "make_damage": 49741.12593078613,
+                      "unit_id": 12000
+                  },
+                  "3265": {
+                      "fitness_ids": [
+                          102004
+                      ],
+                      "take_player_damage": 17959.89517211914,
+                      "take_damage": 18889.89471435547,
+                      "make_player_damage": 1674.3999938964844,
+                      "make_heal": 7783.652236938477,
+                      "make_damage": 7083.810333251953,
+                      "unit_id": 23400
+                  },
+                  "9632": {
+                      "fitness_ids": [
+                          101003
+                      ],
+                      "renew_id": 4322911,
+                      "take_player_damage": 19328.755752563477,
+                      "take_damage": 20003.755752563477,
+                      "make_player_damage": 10025.915298461914,
+                      "make_heal": 0.0,
+                      "make_damage": 16398.013259887695,
+                      "unit_id": 22900
+                  },
+                  "28516": {
+                      "fitness_ids": [
+                          101006
+                      ],
+                      "renew_id": 4323311,
+                      "take_player_damage": 7409.16276550293,
+                      "take_damage": 7709.16276550293,
+                      "make_player_damage": 754.0,
+                      "make_heal": 22881.213287353516,
+                      "make_damage": 3432.3280639648438,
+                      "unit_id": 23300
+                  },
+                  "37491": {
+                      "take_player_damage": 11102.164108276367,
+                      "take_damage": 11252.164108276367,
+                      "make_player_damage": 10695.066909790039,
+                      "make_heal": 0.0,
+                      "make_damage": 17296.95960998535,
+                      "unit_id": 24200
+                  },
+                  "62306": {
+                      "take_player_damage": 8086.051742553711,
+                      "take_damage": 8986.051742553711,
+                      "make_player_damage": 10049.119552612305,
+                      "make_heal": 0.0,
+                      "make_damage": 14042.294952392578,
+                      "unit_id": 23900
+                  }
+              },
+              "relic_ids": [
+                  100014,
+                  100005
+              ],
+              "titles": [],
+              "diamond_num": 0,
+              "killer_type": 0,
+              "is_dead": true,
+              "ai_template_id": 4303,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 1,
+                  "20": 3,
+                  "30": 7,
+                  "40": 10,
+                  "50": 23,
+                  "60": 32,
+                  "70": 37,
+                  "80": 41,
+                  "90": 46,
+                  "100": 48,
+                  "110": 24,
+                  "120": 21,
+                  "130": 29,
+                  "140": 10,
+                  "142": 0,
+                  "150": 0,
+                  "160": 0,
+                  "170": 0,
+                  "180": 0,
+                  "190": 0,
+                  "200": 0,
+                  "210": 0,
+                  "220": 0,
+                  "230": 0,
+                  "240": 0
+              },
+              "battle_captain_id": 12000,
+              "killer_guid": "aDKYEneSQL3fs2qO",
+              "is_robot": true,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 16.5,
+                  "20": 33.0,
+                  "30": 37.5,
+                  "40": 58.5,
+                  "50": 72.0,
+                  "60": 93.0,
+                  "70": 99.0,
+                  "80": 124.5,
+                  "90": 129.0,
+                  "100": 144.0,
+                  "110": 147.0,
+                  "120": 168.0,
+                  "130": 172.5,
+                  "140": 198.0,
+                  "142": 198.0,
+                  "150": 198.0,
+                  "160": 198.0,
+                  "170": 198.0,
+                  "180": 198.0,
+                  "190": 198.0,
+                  "200": 198.0,
+                  "210": 198.0,
+                  "220": 198.0,
+                  "230": 198.0,
+                  "240": 198.0
+              },
+              "player_name": "UatiSutton",
+              "global_rank": 0,
+              "head_frame": 0,
+              "faction": 3,
+              "player_guid": "aDk_QneSQL3OMO7j",
+              "is_abstain": false,
+              "group_id": "",
+              "head": 320000,
+              "title": 0,
+              "rank": 6
+          },
+          "aDk_QneSQL3OMO7m": {
+              "settlement_units": {
+                  "3231": {
+                      "hex_ids": [
+                          10036
+                      ],
+                      "fitness_ids": [
+                          101001
+                      ],
+                      "take_player_damage": 10879.276580810547,
+                      "take_damage": 12583.222961425781,
+                      "make_player_damage": 24863.27911376953,
+                      "make_heal": 0.0,
+                      "make_damage": 52626.05258178711,
+                      "unit_id": 11700
+                  },
+                  "3241": {
+                      "fitness_ids": [
+                          101003,
+                          102003,
+                          101006,
+                          101001
+                      ],
+                      "renew_id": 4323711,
+                      "take_player_damage": 9350.066009521484,
+                      "take_damage": 10170.066009521484,
+                      "make_player_damage": 8012.729919433594,
+                      "make_heal": 0.0,
+                      "make_damage": 21038.442276000977,
+                      "unit_id": 23700
+                  },
+                  "8313": {
+                      "fitness_ids": [
+                          103009
+                      ],
+                      "renew_id": 4322900,
+                      "take_player_damage": 10199.943237304688,
+                      "take_damage": 12069.943237304688,
+                      "make_player_damage": 10644.346801757812,
+                      "make_heal": 0.0,
+                      "make_damage": 20376.473861694336,
+                      "unit_id": 22900
+                  },
+                  "31974": {
+                      "fitness_ids": [
+                          102007
+                      ],
+                      "renew_id": 4323610,
+                      "take_player_damage": 8384.934860229492,
+                      "take_damage": 8819.933944702148,
+                      "make_player_damage": 13505.670684814453,
+                      "make_heal": 0.0,
+                      "make_damage": 17173.17544555664,
+                      "unit_id": 23600
+                  },
+                  "42805": {
+                      "fitness_ids": [
+                          101004
+                      ],
+                      "take_player_damage": 12745.404052734375,
+                      "take_damage": 12887.903594970703,
+                      "make_player_damage": 10707.309310913086,
+                      "make_heal": 0.0,
+                      "make_damage": 13788.321640014648,
+                      "unit_id": 23500
+                  },
+                  "50344": {
+                      "take_player_damage": 7039.94873046875,
+                      "take_damage": 7799.94873046875,
+                      "make_player_damage": 10962.60415649414,
+                      "make_heal": 0.0,
+                      "make_damage": 18398.10513305664,
+                      "unit_id": 22800
+                  }
+              },
+              "relic_ids": [
+                  100022,
+                  100003
+              ],
+              "titles": [],
+              "diamond_num": 0,
+              "killer_type": 1,
+              "is_dead": true,
+              "ai_template_id": 4303,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 2,
+                  "20": 3,
+                  "30": 3,
+                  "40": 7,
+                  "50": 11,
+                  "60": 13,
+                  "70": 15,
+                  "80": 15,
+                  "90": 18,
+                  "100": 20,
+                  "110": 33,
+                  "120": 24,
+                  "130": 37,
+                  "140": 39,
+                  "150": 44,
+                  "160": 22,
+                  "164": 0,
+                  "170": 0,
+                  "180": 0,
+                  "190": 0,
+                  "200": 0,
+                  "210": 0,
+                  "220": 0,
+                  "230": 0,
+                  "240": 0
+              },
+              "battle_captain_id": 11700,
+              "is_robot": true,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 16.5,
+                  "20": 34.5,
+                  "30": 48.0,
+                  "40": 75.0,
+                  "50": 94.5,
+                  "60": 103.5,
+                  "70": 109.5,
+                  "80": 118.5,
+                  "90": 124.5,
+                  "100": 136.5,
+                  "110": 153.0,
+                  "120": 157.5,
+                  "130": 171.0,
+                  "140": 199.5,
+                  "150": 225.0,
+                  "160": 262.5,
+                  "164": 265.5,
+                  "170": 265.5,
+                  "180": 265.5,
+                  "190": 265.5,
+                  "200": 265.5,
+                  "210": 265.5,
+                  "220": 265.5,
+                  "230": 265.5,
+                  "240": 265.5
+              },
+              "player_name": "NethyrHill",
+              "global_rank": 0,
+              "head_frame": 0,
+              "faction": 4,
+              "player_guid": "aDk_QneSQL3OMO7m",
+              "is_abstain": false,
+              "group_id": "",
+              "head": 320024,
+              "title": 0,
+              "rank": 4
+          },
+          "aDk_QneSQL3OMO7p": {
+              "settlement_units": {
+                  "3356": {
+                      "fitness_ids": [
+                          102001,
+                          103007
+                      ],
+                      "take_player_damage": 10339.705932617188,
+                      "take_damage": 11699.705932617188,
+                      "make_player_damage": 4392.384567260742,
+                      "make_heal": 0.0,
+                      "make_damage": 14980.843475341797,
+                      "unit_id": 12100
+                  },
+                  "3368": {
+                      "take_player_damage": 6455.4779052734375,
+                      "take_damage": 7225.4779052734375,
+                      "make_player_damage": 689.4011688232422,
+                      "make_heal": 0.0,
+                      "make_damage": 6379.195205688477,
+                      "unit_id": 23700
+                  },
+                  "15390": {
+                      "fitness_ids": [
+                          102002
+                      ],
+                      "renew_id": 4323411,
+                      "take_player_damage": 7295.475006103516,
+                      "take_damage": 7945.475006103516,
+                      "make_player_damage": 481.3879089355469,
+                      "make_heal": 4028.7211303710938,
+                      "make_damage": 3893.134963989258,
+                      "unit_id": 23400
+                  }
+              },
+              "relic_ids": [],
+              "titles": [],
+              "diamond_num": 0,
+              "killer_type": 0,
+              "is_dead": true,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 0,
+                  "20": 3,
+                  "30": 3,
+                  "40": 3,
+                  "50": 3,
+                  "60": 0,
+                  "62": 0,
+                  "70": 0,
+                  "80": 0,
+                  "90": 0,
+                  "100": 0,
+                  "110": 0,
+                  "120": 0,
+                  "130": 0,
+                  "140": 0,
+                  "150": 0,
+                  "160": 0,
+                  "170": 0,
+                  "180": 0,
+                  "190": 0,
+                  "200": 0,
+                  "210": 0,
+                  "220": 0,
+                  "230": 0,
+                  "240": 0
+              },
+              "ai_template_id": 3303,
+              "battle_captain_id": 12100,
+              "killer_guid": "aDAMgneSQL3jG1xN",
+              "is_robot": true,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 9.0,
+                  "20": 40.5,
+                  "30": 43.5,
+                  "40": 58.5,
+                  "50": 72.0,
+                  "60": 87.0,
+                  "62": 87.0,
+                  "70": 87.0,
+                  "80": 87.0,
+                  "90": 87.0,
+                  "100": 87.0,
+                  "110": 87.0,
+                  "120": 87.0,
+                  "130": 87.0,
+                  "140": 87.0,
+                  "150": 87.0,
+                  "160": 87.0,
+                  "170": 87.0,
+                  "180": 87.0,
+                  "190": 87.0,
+                  "200": 87.0,
+                  "210": 87.0,
+                  "220": 87.0,
+                  "230": 87.0,
+                  "240": 87.0
+              },
+              "player_name": "EijokiZyllamin",
+              "global_rank": 0,
+              "head_frame": 0,
+              "faction": 5,
+              "player_guid": "aDk_QneSQL3OMO7p",
+              "is_abstain": false,
+              "group_id": "",
+              "head": 320025,
+              "title": 0,
+              "rank": 8
+          },
+          "aDk_QneSQL3OMO7s": {
+              "settlement_units": {
+                  "3279": {
+                      "fitness_ids": [
+                          102006,
+                          101003
+                      ],
+                      "take_player_damage": 10300.650207519531,
+                      "take_damage": 11790.650207519531,
+                      "make_player_damage": 4973.889938354492,
+                      "make_heal": 0.0,
+                      "make_damage": 34495.14424133301,
+                      "unit_id": 11700
+                  },
+                  "3289": {
+                      "fitness_ids": [
+                          101006,
+                          101001
+                      ],
+                      "take_player_damage": 12238.065887451172,
+                      "take_damage": 12838.065887451172,
+                      "make_player_damage": 1172.0794525146484,
+                      "make_heal": 15092.91928100586,
+                      "make_damage": 6721.590896606445,
+                      "unit_id": 23400
+                  },
+                  "16509": {
+                      "fitness_ids": [
+                          102006,
+                          101003
+                      ],
+                      "renew_id": 4323820,
+                      "take_player_damage": 10401.864852905273,
+                      "take_damage": 11771.864852905273,
+                      "make_player_damage": 3625.386993408203,
+                      "make_heal": 3054.4903717041016,
+                      "make_damage": 13932.766479492188,
+                      "unit_id": 23800
+                  },
+                  "37456": {
+                      "fitness_ids": [
+                          102001
+                      ],
+                      "take_player_damage": 9386.466186523438,
+                      "take_damage": 9856.466186523438,
+                      "make_player_damage": 2233.8351135253906,
+                      "make_heal": 0.0,
+                      "make_damage": 5391.149765014648,
+                      "unit_id": 23700
+                  },
+                  "49471": {
+                      "fitness_ids": [
+                          101001
+                      ],
+                      "renew_id": 4324000,
+                      "take_player_damage": 11480.828338623047,
+                      "take_damage": 12380.828338623047,
+                      "make_player_damage": 3536.8477630615234,
+                      "make_heal": 0.0,
+                      "make_damage": 6227.947769165039,
+                      "unit_id": 24000
+                  },
+                  "52014": {
+                      "renew_id": 4324111,
+                      "take_player_damage": 7832.626159667969,
+                      "take_damage": 7982.626159667969,
+                      "make_player_damage": 8649.34765625,
+                      "make_heal": 0.0,
+                      "make_damage": 13212.34765625,
+                      "unit_id": 24100
+                  }
+              },
+              "relic_ids": [
+                  100008
+              ],
+              "titles": [],
+              "diamond_num": 0,
+              "killer_type": 0,
+              "is_dead": true,
+              "ai_template_id": 4303,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 1,
+                  "20": 1,
+                  "30": 3,
+                  "40": 5,
+                  "50": 6,
+                  "60": 8,
+                  "70": 12,
+                  "80": 14,
+                  "90": 14,
+                  "100": 16,
+                  "110": 17,
+                  "120": 20,
+                  "130": 38,
+                  "140": 40,
+                  "147": 0,
+                  "150": 0,
+                  "160": 0,
+                  "170": 0,
+                  "180": 0,
+                  "190": 0,
+                  "200": 0,
+                  "210": 0,
+                  "220": 0,
+                  "230": 0,
+                  "240": 0
+              },
+              "battle_captain_id": 11700,
+              "killer_guid": "aDk_QneSQL3OMO7m",
+              "is_robot": true,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 18.0,
+                  "20": 34.5,
+                  "30": 42.0,
+                  "40": 51.0,
+                  "50": 58.5,
+                  "60": 75.0,
+                  "70": 102.0,
+                  "80": 121.5,
+                  "90": 121.5,
+                  "100": 135.0,
+                  "110": 145.5,
+                  "120": 169.5,
+                  "130": 189.0,
+                  "140": 211.5,
+                  "147": 234.0,
+                  "150": 234.0,
+                  "160": 234.0,
+                  "170": 234.0,
+                  "180": 234.0,
+                  "190": 234.0,
+                  "200": 234.0,
+                  "210": 234.0,
+                  "220": 234.0,
+                  "230": 234.0,
+                  "240": 234.0
+              },
+              "player_name": "GarlanDorberos",
+              "global_rank": 0,
+              "head_frame": 0,
+              "faction": 6,
+              "player_guid": "aDk_QneSQL3OMO7s",
+              "is_abstain": false,
+              "group_id": "",
+              "head": 320010,
+              "title": 0,
+              "rank": 5
+          },
+          "aDk_QneSQL3OMO7v": {
+              "settlement_units": {
+                  "3332": {
+                      "hex_ids": [
+                          10040
+                      ],
+                      "fitness_ids": [
+                          102003,
+                          102002,
+                          101006
+                      ],
+                      "take_player_damage": 4785.0,
+                      "take_damage": 7625.0,
+                      "make_player_damage": 6663.430557250977,
+                      "make_heal": 0.0,
+                      "make_damage": 43631.24133300781,
+                      "unit_id": 12200
+                  },
+                  "3342": {
+                      "fitness_ids": [
+                          102001,
+                          101003
+                      ],
+                      "renew_id": 4323410,
+                      "take_player_damage": 15329.024337768555,
+                      "take_damage": 17779.024337768555,
+                      "make_player_damage": 0.0,
+                      "make_heal": 10867.591796875,
+                      "make_damage": 5422.800109863281,
+                      "unit_id": 23400
+                  },
+                  "10568": {
+                      "fitness_ids": [
+                          101003,
+                          102007,
+                          101002,
+                          103006,
+                          101006
+                      ],
+                      "renew_id": 4323720,
+                      "take_player_damage": 4900.0,
+                      "take_damage": 8560.0,
+                      "make_player_damage": 768.9208679199219,
+                      "make_heal": 0.0,
+                      "make_damage": 18942.29850769043,
+                      "unit_id": 23700
+                  },
+                  "36824": {
+                      "fitness_ids": [
+                          101003
+                      ],
+                      "take_player_damage": 5100.0,
+                      "take_damage": 5940.0,
+                      "make_player_damage": 2090.5147247314453,
+                      "make_heal": 0.0,
+                      "make_damage": 13343.354507446289,
+                      "unit_id": 23900
+                  },
+                  "44018": {
+                      "fitness_ids": [
+                          101002,
+                          102001
+                      ],
+                      "take_player_damage": 5062.626800537109,
+                      "take_damage": 6562.626800537109,
+                      "make_player_damage": 1373.5221862792969,
+                      "make_heal": 0.0,
+                      "make_damage": 20274.206588745117,
+                      "unit_id": 22800
+                  },
+                  "69309": {
+                      "fitness_ids": [
+                          101004
+                      ],
+                      "renew_id": 4324000,
+                      "take_player_damage": 5757.500457763672,
+                      "take_damage": 6427.999267578125,
+                      "make_player_damage": 4445.995162963867,
+                      "make_heal": 0.0,
+                      "make_damage": 7695.995162963867,
+                      "unit_id": 24000
+                  }
+              },
+              "relic_ids": [
+                  100009,
+                  100013
+              ],
+              "advanced_power_dict": {
+                  "1": 100029
+              },
+              "advanced_power_id": 100029,
+              "titles": [],
+              "diamond_num": 0,
+              "killer_type": 0,
+              "is_dead": true,
+              "ai_template_id": 4303,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 2,
+                  "20": 3,
+                  "30": 3,
+                  "40": 5,
+                  "50": 7,
+                  "60": 11,
+                  "70": 12,
+                  "80": 12,
+                  "90": 15,
+                  "100": 18,
+                  "110": 20,
+                  "120": 25,
+                  "130": 29,
+                  "140": 32,
+                  "150": 36,
+                  "160": 40,
+                  "170": 45,
+                  "180": 50,
+                  "190": 52,
+                  "200": 52,
+                  "210": 39,
+                  "220": 39,
+                  "226": 0,
+                  "230": 0,
+                  "240": 0
+              },
+              "battle_captain_id": 12200,
+              "killer_guid": "aDAMgneSQL3jG1xN",
+              "is_robot": true,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 22.5,
+                  "20": 39.0,
+                  "30": 49.5,
+                  "40": 63.0,
+                  "50": 72.0,
+                  "60": 85.5,
+                  "70": 93.0,
+                  "80": 93.0,
+                  "90": 123.0,
+                  "100": 148.5,
+                  "110": 169.5,
+                  "120": 202.5,
+                  "130": 235.5,
+                  "140": 259.5,
+                  "150": 285.0,
+                  "160": 309.0,
+                  "170": 351.0,
+                  "180": 360.0,
+                  "190": 379.5,
+                  "200": 379.5,
+                  "210": 379.5,
+                  "220": 379.5,
+                  "226": 390.0,
+                  "230": 390.0,
+                  "240": 390.0
+              },
+              "player_name": "AndryKelyarus",
+              "global_rank": 0,
+              "head_frame": 0,
+              "faction": 7,
+              "player_guid": "aDk_QneSQL3OMO7v",
+              "is_abstain": false,
+              "group_id": "",
+              "head": 320018,
+              "title": 0,
+              "rank": 3
+          },
+          "aDk_QneSQL3OMO7y": {
+              "settlement_units": {
+                  "3407": {
+                      "hex_ids": [
+                          10038
+                      ],
+                      "fitness_ids": [
+                          101001
+                      ],
+                      "take_player_damage": 11652.255737304688,
+                      "take_damage": 13002.255737304688,
+                      "make_player_damage": 5617.364929199219,
+                      "make_heal": 0.0,
+                      "make_damage": 17682.376220703125,
+                      "unit_id": 11500
+                  },
+                  "3419": {
+                      "fitness_ids": [
+                          101004
+                      ],
+                      "renew_id": 4323400,
+                      "take_player_damage": 5314.002685546875,
+                      "take_damage": 6934.999084472656,
+                      "make_player_damage": 0.0,
+                      "make_heal": 3167.971389770508,
+                      "make_damage": 4496.655258178711,
+                      "unit_id": 23400
+                  },
+                  "19349": {
+                      "renew_id": 4323820,
+                      "take_player_damage": 10567.905807495117,
+                      "take_damage": 10717.905807495117,
+                      "make_player_damage": 8321.010269165039,
+                      "make_heal": 4702.658889770508,
+                      "make_damage": 19195.37925720215,
+                      "unit_id": 23800
+                  }
+              },
+              "relic_ids": [],
+              "titles": [],
+              "diamond_num": 0,
+              "killer_type": 0,
+              "is_dead": true,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 0,
+                  "20": 2,
+                  "30": 2,
+                  "40": 3,
+                  "50": 6,
+                  "60": 9,
+                  "70": 12,
+                  "80": 1,
+                  "86": 0,
+                  "90": 0,
+                  "100": 0,
+                  "110": 0,
+                  "120": 0,
+                  "130": 0,
+                  "140": 0,
+                  "150": 0,
+                  "160": 0,
+                  "170": 0,
+                  "180": 0,
+                  "190": 0,
+                  "200": 0,
+                  "210": 0,
+                  "220": 0,
+                  "230": 0,
+                  "240": 0
+              },
+              "ai_template_id": 3303,
+              "battle_captain_id": 11500,
+              "killer_guid": "aDAMgneSQL3jG1xN",
+              "is_robot": true,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 9.0,
+                  "20": 27.0,
+                  "30": 30.0,
+                  "40": 37.5,
+                  "50": 51.0,
+                  "60": 64.5,
+                  "70": 82.5,
+                  "80": 82.5,
+                  "86": 96.0,
+                  "90": 96.0,
+                  "100": 96.0,
+                  "110": 96.0,
+                  "120": 96.0,
+                  "130": 96.0,
+                  "140": 96.0,
+                  "150": 96.0,
+                  "160": 96.0,
+                  "170": 96.0,
+                  "180": 96.0,
+                  "190": 96.0,
+                  "200": 96.0,
+                  "210": 96.0,
+                  "220": 96.0,
+                  "230": 96.0,
+                  "240": 96.0
+              },
+              "player_name": "SalazarMistfist",
+              "global_rank": 0,
+              "head_frame": 0,
+              "faction": 8,
+              "player_guid": "aDk_QneSQL3OMO7y",
+              "is_abstain": false,
+              "group_id": "",
+              "head": 320001,
+              "title": 0,
+              "rank": 7
+          },
+          "aDKYEneSQL3fs2qO": {
+              "settlement_units": {
+                  "3303": {
+                      "hex_ids": [
+                          10039
+                      ],
+                      "fitness_ids": [
+                          102002,
+                          101006,
+                          101004,
+                          102001
+                      ],
+                      "take_player_damage": 16910.3839263916,
+                      "take_damage": 19607.547073364258,
+                      "make_player_damage": 69534.07929992676,
+                      "make_heal": 0.0,
+                      "make_damage": 133528.86164855957,
+                      "unit_id": 12000
+                  },
+                  "3316": {
+                      "fitness_ids": [
+                          101002,
+                          101003
+                      ],
+                      "renew_id": 4324511,
+                      "take_player_damage": 9513.62564086914,
+                      "take_damage": 11219.57290649414,
+                      "make_player_damage": 32863.8346862793,
+                      "make_heal": 0.0,
+                      "make_damage": 67462.55340576172,
+                      "unit_id": 24500
+                  },
+                  "15002": {
+                      "fitness_ids": [
+                          102001,
+                          101004
+                      ],
+                      "renew_id": 4323311,
+                      "take_player_damage": 10397.103637695312,
+                      "take_damage": 11601.67739868164,
+                      "make_player_damage": 2835.0370330810547,
+                      "make_heal": 22625.498291015625,
+                      "make_damage": 15639.771240234375,
+                      "unit_id": 23300
+                  },
+                  "41934": {
+                      "fitness_ids": [
+                          102004
+                      ],
+                      "renew_id": 4323210,
+                      "take_player_damage": 7817.932891845703,
+                      "take_damage": 8117.932891845703,
+                      "make_player_damage": 5374.091934204102,
+                      "make_heal": 22761.3660736084,
+                      "make_damage": 15653.78352355957,
+                      "unit_id": 23200
+                  },
+                  "59078": {
+                      "fitness_ids": [
+                          102006
+                      ],
+                      "renew_id": 4323520,
+                      "take_player_damage": 18413.731063842773,
+                      "take_damage": 19900.756149291992,
+                      "make_player_damage": 11070.659317016602,
+                      "make_heal": 0.0,
+                      "make_damage": 28917.6572265625,
+                      "unit_id": 23500
+                  },
+                  "83440": {
+                      "fitness_ids": [
+                          101002,
+                          101005,
+                          102004
+                      ],
+                      "renew_id": 4323020,
+                      "take_player_damage": 8580.024658203125,
+                      "take_damage": 8972.292114257812,
+                      "make_player_damage": 1140.9661865234375,
+                      "make_heal": 23178.730667114258,
+                      "make_damage": 5610.366195678711,
+                      "unit_id": 23000
+                  }
+              },
+              "relic_ids": [
+                  100017
+              ],
+              "advanced_power_dict": {
+                  "1": 100015
+              },
+              "advanced_power_id": 100015,
+              "titles": [
+                  1600
+              ],
+              "diamond_num": 0,
+              "killer_type": 0,
+              "is_dead": true,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 0,
+                  "20": 0,
+                  "30": 0,
+                  "40": 1,
+                  "50": 2,
+                  "60": 6,
+                  "70": 7,
+                  "80": 8,
+                  "90": 10,
+                  "100": 11,
+                  "110": 12,
+                  "120": 15,
+                  "130": 16,
+                  "140": 26,
+                  "150": 115,
+                  "160": 120,
+                  "170": 173,
+                  "180": 178,
+                  "190": 202,
+                  "200": 209,
+                  "210": 220,
+                  "220": 251,
+                  "230": 289,
+                  "240": 265
+              },
+              "ai_template_id": 0,
+              "battle_captain_id": 12000,
+              "killer_guid": "aDAMgneSQL3jG1xN",
+              "is_robot": false,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 5,
+                  "20": 16,
+                  "30": 20,
+                  "40": 28,
+                  "50": 33,
+                  "60": 45,
+                  "70": 54,
+                  "80": 58,
+                  "90": 75,
+                  "100": 86,
+                  "110": 93,
+                  "120": 115,
+                  "130": 118,
+                  "140": 131,
+                  "150": 145,
+                  "160": 149,
+                  "170": 169,
+                  "180": 186,
+                  "190": 225,
+                  "200": 257,
+                  "210": 275,
+                  "220": 301,
+                  "230": 352,
+                  "240": 359
+              },
+              "player_name": "AmaraRose",
+              "global_rank": 0,
+              "head_frame": 330001,
+              "faction": 2,
+              "player_guid": "aDKYEneSQL3fs2qO",
+              "is_abstain": false,
+              "group_id": "04000003",
+              "head": 320024,
+              "title": 340002,
+              "rank": 2
+          },
+          "aDAMgneSQL3jG1xN": {
+              "settlement_units": {
+                  "3384": {
+                      "hex_ids": [
+                          10040
+                      ],
+                      "fitness_ids": [
+                          101006,
+                          101001,
+                          101003
+                      ],
+                      "take_player_damage": 4611.41520690918,
+                      "take_damage": 5336.904495239258,
+                      "make_player_damage": 92838.10681152344,
+                      "make_heal": 0.0,
+                      "make_damage": 149201.67683410645,
+                      "unit_id": 12200
+                  },
+                  "3394": {
+                      "fitness_ids": [
+                          101003,
+                          102003,
+                          101006,
+                          102002,
+                          102001
+                      ],
+                      "renew_id": 4323720,
+                      "take_player_damage": 5086.054489135742,
+                      "take_damage": 6956.946823120117,
+                      "make_player_damage": 26413.732223510742,
+                      "make_heal": 0.0,
+                      "make_damage": 49947.0964050293,
+                      "unit_id": 23700
+                  },
+                  "17319": {
+                      "fitness_ids": [
+                          102007,
+                          101002,
+                          103011
+                      ],
+                      "renew_id": 4322320,
+                      "take_player_damage": 13622.059677124023,
+                      "take_damage": 14973.200469970703,
+                      "make_player_damage": 11828.68881225586,
+                      "make_heal": 29.999542236328125,
+                      "make_damage": 21334.795791625977,
+                      "unit_id": 22300
+                  },
+                  "29970": {
+                      "fitness_ids": [
+                          101003,
+                          102004,
+                          103008,
+                          102005
+                      ],
+                      "renew_id": 4323011,
+                      "take_player_damage": 9638.300033569336,
+                      "take_damage": 10073.168197631836,
+                      "make_player_damage": 3780.5261993408203,
+                      "make_heal": 22629.702713012695,
+                      "make_damage": 11121.644287109375,
+                      "unit_id": 23000
+                  },
+                  "33008": {
+                      "fitness_ids": [
+                          101003,
+                          102004
+                      ],
+                      "renew_id": 4322611,
+                      "take_player_damage": 4526.60823059082,
+                      "take_damage": 4722.000839233398,
+                      "make_player_damage": 24347.691680908203,
+                      "make_heal": 0.0,
+                      "make_damage": 48909.13725280762,
+                      "unit_id": 22600
+                  },
+                  "56000": {
+                      "renew_id": 4322811,
+                      "take_player_damage": 4237.177993774414,
+                      "take_damage": 4396.131851196289,
+                      "make_player_damage": 6193.147186279297,
+                      "make_heal": 0.0,
+                      "make_damage": 25286.707916259766,
+                      "unit_id": 22800
+                  }
+              },
+              "relic_ids": [
+                  100004,
+                  100007
+              ],
+              "advanced_power_dict": {
+                  "1": 100017
+              },
+              "advanced_power_id": 100017,
+              "titles": [
+                  1900,
+                  2100,
+                  2200,
+                  1800,
+                  2301
+              ],
+              "diamond_num": 271,
+              "killer_type": -1,
+              "is_dead": false,
+              "diamond_statistic": {
+                  "0": 0,
+                  "10": 2,
+                  "20": 3,
+                  "30": 3,
+                  "40": 6,
+                  "50": 8,
+                  "60": 15,
+                  "70": 41,
+                  "80": 44,
+                  "90": 70,
+                  "100": 72,
+                  "110": 77,
+                  "120": 78,
+                  "130": 79,
+                  "140": 82,
+                  "150": 88,
+                  "160": 91,
+                  "170": 93,
+                  "180": 97,
+                  "190": 102,
+                  "200": 105,
+                  "210": 116,
+                  "220": 130,
+                  "230": 198,
+                  "240": 201,
+                  "248": 271
+              },
+              "ai_template_id": 0,
+              "battle_captain_id": 12200,
+              "is_robot": false,
+              "gold_statistic": {
+                  "0": 0,
+                  "10": 8,
+                  "20": 29,
+                  "30": 32,
+                  "40": 48,
+                  "50": 57,
+                  "60": 66,
+                  "70": 82,
+                  "80": 96,
+                  "90": 103,
+                  "100": 119,
+                  "110": 152,
+                  "120": 159,
+                  "130": 173,
+                  "140": 199,
+                  "150": 226,
+                  "160": 243,
+                  "170": 255,
+                  "180": 278,
+                  "190": 308,
+                  "200": 330,
+                  "210": 351,
+                  "220": 399,
+                  "230": 442,
+                  "240": 454,
+                  "248": 461
+              },
+              "player_name": "Lawiswis",
+              "global_rank": 0,
+              "head_frame": 330003,
+              "faction": 1,
+              "player_guid": "aDAMgneSQL3jG1xN",
+              "is_abstain": false,
+              "group_id": "04000002",
+              "head": 320009,
+              "title": 340002,
+              "rank": 1
+          }
       },
-      // 是否弃权
-      "is_abstain": false,
-      // 玩家GUID
-      "player_guid": "aDAk7Mdrpv5FFohz",
-      // 阵营
-      "faction": 0,
-      // AI索引
-      "ai_index": 0,
-      // 排名
-      "rank": 1,
-      // 称号
-      "title": 0,
-      // 头像ID
-      "head": 320020,
-      // 组ID
-      "group_id": "00000002",
-      // ELO分数
-      "elo_score": 0,
-      // 全球排名
-      "global_rank": 0,
-      // 玩家名称
-      "player_name": "娇小的兰斯顿",
-      // 金币统计
-      "gold_statistic": {
-        "0": 0,   // 0-10分钟阶段
-        "10": 0,  // 10-20分钟阶段
-        "20": 0,  // 20-30分钟阶段
-        "30": 0,  // 30-40分钟阶段
-        "40": 8.0, // 40-50分钟阶段
-        "50": 18.0, // 50-51分钟阶段
-        "51": 18.0 // 51分钟以上阶段
-      },
-      // AI模板ID
-      "ai_template_id": 0,
-      // 钻石统计
-      "diamond_statistic": {
-        "0": 0,   // 0-10分钟阶段
-        "10": 0,  // 10-20分钟阶段
-        "20": 0,  // 20-30分钟阶段
-        "30": 0,  // 30-40分钟阶段
-        "40": 0,  // 40-50分钟阶段
-        "50": 5,  // 50-51分钟阶段
-        "51": 11  // 51分钟以上阶段
-      },
-      // 遗物ID列表
-      "relic_ids": [],
-      // 高级能力字典
-      "advanced_power_dict": {
-        "1": 100011  // 能力类型1对应的能力ID
-      },
-      // 称号列表
-      "titles": [1900]
-    },
-    "aDAk7cdrpv5FFok1": {
-      "head_frame": 0,
-      "battle_captain_id": 11700,
-      "is_dead": true,
-      "killer_type": 0,
-      "diamond_num": 0,
-      "is_robot": false,
-      "killer_guid": "aDAk7Mdrpv5FFohz",
-      "settlement_units": {
-        "2353": {
-          "unit_id": 11700,
-          "make_player_damage": 7294.894088745117,
-          "take_damage": 4950.0,
-          "make_damage": 8672.09408569336,
-          "make_heal": 0.0,
-          "take_player_damage": 4750.0,
-          "renew_id": 0,
-          "fitness_ids": [],
-          "hex_ids": [10036]
-        },
-        "2770": {
-          "unit_id": 22600,
-          "make_player_damage": 17424.11099243164,
-          "take_damage": 3910.0,
-          "make_damage": 17814.11099243164,
-          "make_heal": 0.0,
-          "take_player_damage": 3760.0,
-          "renew_id": 4322600,
-          "fitness_ids": [],
-          "hex_ids": []
-        },
-        "3034": {
-          "unit_id": 22800,
-          "make_player_damage": 5074.047622680664,
-          "take_damage": 4200.0,
-          "make_damage": 6187.64762878418,
-          "make_heal": 0.0,
-          "take_player_damage": 3150.0,
-          "renew_id": 4322800,
-          "fitness_ids": [],
-          "hex_ids": []
-        }
-      },
-      "is_abstain": false,
-      "player_guid": "aDAk7cdrpv5FFok1",
-      "faction": 1,
-      "ai_index": 0,
-      "rank": 2,
-      "title": 0,
-      "head": 320008,
-      "group_id": "00000002",
-      "elo_score": 0,
-      "global_rank": 0,
-      "player_name": "无私的贝塔",
-      "gold_statistic": {
-        "0": 0,
-        "10": 0,
-        "20": 0,
-        "30": 0,
-        "40": 0,
-        "50": 8.0
-      },
-      "ai_template_id": 0,
-      "diamond_statistic": {
-        "0": 0,
-        "10": 0,
-        "20": 0,
-        "30": 0,
-        "40": 0,
-        "50": 6
-      },
-      "relic_ids": [100007, 100008],
-      "advanced_power_dict": {},
-      "titles": [],
-      "advanced_power_id": 0
-    }
-  },
-  // 战斗绑定数据
-  "combat_bind_data": {},
-  // 战斗唯一标识
-  "combat_uuid": "aDAlBcdrpv5Ef97P",
-  // 战斗来源类型
-  "combat_from_type": 2
-}
+      "settlement_type": 1,
+      "force_over": "",
+      "level_id": 1,
+      "mod_id": 10,
+      "is_sync": true,
+      "combat_from_type": 1,
+      "combat_uuid": "aDk_QneSQL3OMO71",
+      "combat_duration": 247764,
+      "combat_init_time": 1748582232554,
+      "combat_over_time": 1748582498319,
+      "combat_version": 0,
+      "combat_mode_type": 1,
+      "combat_config_id": 2006
+  }
+]

@@ -126,6 +126,7 @@ const QueryHorizontalBar = ({setLoading}) => {
         alignItems: 'center',
         gap: '20px'
       }}>
+        {/* 如果输出条件（包括排序、指标）与原来不一样，需要刷新分页参数 */}
         <SearchButton 
           onClick={() => setLoading(true)} 
           buttonTheme={{

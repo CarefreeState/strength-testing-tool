@@ -1,0 +1,36 @@
+{
+  // 战斗持续时间(毫秒)
+  "combat_duration": 50853,
+  // 玩家结算数据
+  "settlement_player": {
+    // 战斗队长ID
+    "battle_captain_id": 10700,
+    // 排名
+    "rank": 1,
+    // 遗物ID列表
+    "relic_ids": [],
+    // 进修ID列表
+    "advanced_power_ids": [100011],
+    // 单位结算数据
+    "settlement_units": [
+      {
+        // 单位ID
+        "unit_id": 10700,
+        // 对玩家造成伤害(总输出指标)
+        "make_player_damage": 2510.9872283935547,
+        // 承受总伤害
+        "take_damage": 8575.629348754883,
+        // 造成总伤害
+        "make_damage": 2678.3846740722656,
+        // 治疗量(总治疗指标)
+        "make_heal": 0.0,
+        // 承受玩家伤害
+        "take_player_damage": 8225.629348754883,
+        // 装备ID列表
+        "fitness_ids": [],
+        // 专属强化ID列表
+        "hex_ids": [10027]
+      }
+    ]
+  }
+}
