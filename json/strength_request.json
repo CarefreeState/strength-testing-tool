@@ -1,37 +1,33 @@
 {
-  "database": "strength_data",
-  "collection": "RobotTestCollection",
-  "query": {
-    "filter_conditions": {
-      "enable": true,
-      "time_range": {
-        "start": 0,
-        "end": 0
-      },
-      "captain": {
-        "id": 1
-      },
-      "units": {
-        "size": 0,
-        "operate" : "ge",
-        "ids": [1]
-      },
-      "advanced_power_ids": [1],
-      "fitness_ids": [1],
-      "relic_ids": [1],
-      "hex_ids": [1]
+  "type": "robot",
+  "filter_conditions": {
+    "enable": true,
+    "time_range": {
+      "start": 0,
+      "end": 0
     },
-    "fuzzy_conditions": {
-      "enable": true,
-      "captain": false,
-      "units": false,
-      "advanced_power_ids": true,
-      "fitness_ids": true,
-      "relic_ids": true,
-      "hex_ids": true
-    }
+    "captain": {
+      "id": 1
+    },
+    "units": {
+      "size": 0,
+      "operate" : "ge",
+      "ids": [1]
+    },
+    "advanced_power_ids": [1],
+    "fitness_ids": [1],
+    "relic_ids": [1],
+    "hex_ids": [1]
   },
-  
+  "fuzzy_conditions": {
+    "enable": true,
+    "captain": false,
+    "units": false,
+    "advanced_power_ids": true,
+    "fitness_ids": true,
+    "relic_ids": true,
+    "hex_ids": true
+  },
   "sort": {
     "active": "win_rate",
     "win_rate": "desc",

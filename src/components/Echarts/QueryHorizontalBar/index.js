@@ -18,7 +18,7 @@ echarts.use([
   CanvasRenderer
 ]);
 
-const QueryHorizontalBar = ({setLoading}) => {
+const QueryHorizontalBar = ({submit}) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -26,7 +26,6 @@ const QueryHorizontalBar = ({setLoading}) => {
     const chartDom = chartRef.current;
     chartInstance.current = echarts.init(chartDom);
     const labelRight = { position: 'right' };
-    const labelInside = { position: 'inside' };
 
     // 生成15条测试数据
     const yAxisData = Array.from({length: 15}, (_, i) => `测试项目${i+1}`);
@@ -36,7 +35,7 @@ const QueryHorizontalBar = ({setLoading}) => {
       const maxValue = Math.max(...dataValues);
       return dataValues.map((value) => ({
         value,
-        label: value < maxValue * 0.5 ? labelRight : labelInside
+        label: value < maxValue * 0.5 && labelRight
       }));
     };
 
@@ -56,7 +55,8 @@ const QueryHorizontalBar = ({setLoading}) => {
         top: 100,  // 增加顶部间距
         bottom: 30,
         left: '10%',  // 增加左侧间距
-        right: '10%'  // 增加右侧间距
+        right: '10%',  // 增加右侧间距
+        containLabel: true,
       },
       xAxis: {
         type: 'value',
@@ -69,10 +69,21 @@ const QueryHorizontalBar = ({setLoading}) => {
       },
       yAxis: {
         type: 'category',
-        axisLine: { show: false },
-        axisLabel: { show: false },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        axisLine: { show: true },
+        axisLabel: { 
+          show: true,
+          formatter: function(value, index) {
+            // 通过索引获取对应的数值
+            return `${dataValues[index]}`;
+          }
+        },
         axisTick: { show: false },
-        splitLine: { show: false },
         data: yAxisData
       },
       series: [
@@ -128,7 +139,7 @@ const QueryHorizontalBar = ({setLoading}) => {
       }}>
         {/* 如果输出条件（包括排序、指标）与原来不一样，需要刷新分页参数 */}
         <SearchButton 
-          onClick={() => setLoading(true)} 
+          onClick={submit} 
           buttonTheme={{
             defaultBg: '#26CDD5',
             defaultBorderColor: '#26CDD5',

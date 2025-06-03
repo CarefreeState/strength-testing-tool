@@ -4,9 +4,9 @@ import { message } from 'antd';
 const request = axios.create(
   {
     // 根域名配置
-    baseURL: "http://localhost:1177",
+    baseURL: "/api",
     // 超时时间
-    timeout: 5_000,
+    timeout: 60_000,
   }
 )
 

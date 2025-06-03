@@ -25,6 +25,16 @@ const DetailHorizontalBar = () => {
   useEffect(() => {
     const chartDom = chartRef.current;
     chartInstance.current = echarts.init(chartDom);
+
+    // 生成15条测试数据
+    const yAxisData = Array.from({length: 5}, (_, i) => `测试项目${i+1}`);
+    const dataValues = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
+
+    const generateData = () => {
+      return dataValues.map((value) => ({
+        value
+      }));
+    };
     
     // 初始化图表
     const option = {
@@ -35,7 +45,11 @@ const DetailHorizontalBar = () => {
         }
       },
       legend: {
-        data: ['指标1', '指标2']
+        data: ['指标1', '指标2'],
+        selected: {
+          '指标1': true,
+          '指标2': false,
+        } 
       },
       grid: {
         left: '3%',
@@ -43,27 +57,43 @@ const DetailHorizontalBar = () => {
         bottom: '3%',
         containLabel: true
       },
-      xAxis: [
-        {
-          type: 'value'
-        }
-      ],
-      yAxis: [
-        {
-          type: 'category',
-          axisTick: {
-            show: false
-          },
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        }
-      ],
+      xAxis: {
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        max: 120,  // 关键修改：设置x轴最大值为100
+        min: 0     // 可选：设置x轴最小值为0
+      },
+      yAxis: {
+        type: 'category',
+        splitLine: {
+          show: true,
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        axisLine: { show: true },
+        axisLabel: { 
+          show: true,
+          formatter: function(value, index) {
+            // 通过索引获取对应的数值
+            return `${value}`;
+          }
+        },
+        axisTick: { show: false },
+        data: yAxisData
+      },
       series: [
         {
           name: '指标1',
           type: 'bar',
           label: {
             show: true,
-            position: 'inside'
+            position: 'right',
+            formatter: '{c}'
           },
           emphasis: {
             focus: 'series'
@@ -71,14 +101,15 @@ const DetailHorizontalBar = () => {
           itemStyle: {
             color: '#2D59C6'
           },
-          data: [150, 180, 220, 250, 230, 270, 260]
+          data: generateData()
         },
         {
           name: '指标2',
           type: 'bar',
-          stack: 'Total',
           label: {
-            show: true
+            show: true,
+            position: 'right',
+            formatter: '{c}'
           },
           emphasis: {
             focus: 'series'
@@ -86,7 +117,7 @@ const DetailHorizontalBar = () => {
           itemStyle: {
             color: '#76E0D6'
           },
-          data: [120, 140, 160, 190, 170, 210, 200]
+          data: generateData()
         }
       ]
     };

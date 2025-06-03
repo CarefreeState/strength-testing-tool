@@ -1,9 +1,5 @@
-import EmptyContent from '@/components/Empty/EmptyContent'
+import LayoutSearch from '@/pages/Layout/Search'
 
-const Domestic = () => {
-  return (
-    <EmptyContent desc="内服版本尚未完成开发"/>
-  )
-}
+const Domestic = () => <LayoutSearch type="domestic" />
 
 export default Domestic

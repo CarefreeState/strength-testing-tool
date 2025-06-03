@@ -1,9 +1,5 @@
-import EmptyContent from '@/components/Empty/EmptyContent'
+import LayoutSearch from '@/pages/Layout/Search'
 
-const Overseas = () => {
-  return (
-    <EmptyContent desc="外服版本尚未完成开发"/>
-  )
-}
+const Overseas = () => <LayoutSearch type="overseas" />
 
 export default Overseas

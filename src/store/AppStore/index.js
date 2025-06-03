@@ -1,10 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import conditionsReducer from './modules/conditions'
+import robotConditionsReducer from './modules/robot/conditions'
+import overseasConditionsReducer from './modules/overseas/conditions'
+import domesticConditionsReducer from './modules/domestic/conditions'
+import robotResultsReducer from './modules/robot/results'
+import overseasResultsReducer from './modules/overseas/results'
+import domesticResultsReducer from './modules/domestic/results'
 
 const store = configureStore({
   reducer: {
-    condtions: conditionsReducer,
+    robotCondtions: robotConditionsReducer,
+    robotResults: robotResultsReducer,
+    overseasCondtions: overseasConditionsReducer,
+    overseasResults: overseasResultsReducer,
+    domesticCondtions: domesticConditionsReducer,
+    domesitcResults: domesticResultsReducer,
   },
 })
 

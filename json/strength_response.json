@@ -5,6 +5,7 @@
     {
       "key": "",
       "metrics": {
+        "count": 1,
         "avg_damage": 0,
         "avg_heal": 0,
         "win_rate": 0,
@@ -13,6 +14,7 @@
       "units_metrics": [
         {
           "unit_id": 1,
+          "count": 1, 
           "avg_damage": 0,
           "avg_heal": 0
         }
