@@ -24,7 +24,10 @@ request.interceptors.request.use(
 // 响应拦截器
 request.interceptors.response.use(
   (res) => {
-    return res.data
+    if(res.data.errcode !== 0) {
+      message.error(res.data.msg)
+    }
+    return res.data.data
   },
   (err) => {
     message.error('发生错误')

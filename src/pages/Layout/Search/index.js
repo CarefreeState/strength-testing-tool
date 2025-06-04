@@ -1,10 +1,19 @@
 import { useState } from 'react';
-import { request } from '@/utils'
+import {  
+  parseKey,
+  getMetric,
+  getSort,
+  getSelected,
+  getPrettyButtons,
+  clickPrettyButtons,
+  request,
+} from '@/utils'
+import { useSearch } from '@/hooks'
+import moment from 'moment';
 import CollapseItems from '@/components/Collapse/CollapseItems'
 import EchartsSlitter from '@/components/Slitter/EchartsSlitter'
 import QueryHorizontalBar from '@/components/Echarts/QueryHorizontalBar'
 import DetailHorizontalBar from '@/components/Echarts/DetailHorizontalBar'
-import QueryPagination from '@/components/Pagination/QueryPagination'
 import LoadingAnimation from '@/components/Loading/LoadingAnimation'
 import SwitchButton from '@/components/Button/SwitchButton'
 import SimpleCheckbox from '@/components/Button/SimpleCheckbox'
@@ -13,15 +22,8 @@ import NumberSelector from '@/components/Selector/NumberSelector'
 import PrettyButton from '@/components/Button/PrettyButton'
 import DateTimeSelector from '@/components/Selector/DateTimeSelector'
 import {getValueLabel} from '@/constants'
-import {useSelector, useDispatch} from 'react-redux'
-import {
-  setDomesticDetailResult, setDomesticQueryResult,
-  setOverseasDetailResult,  setOverseasQueryResult,
-  setRobotDetailResult, setRobotQueryResult,
-  setRobotFilter_conditions, setRobotFuzzy_conditions, setRobotSort, 
-  setOverseasFilter_conditions, setOverseasFuzzy_conditions, setOverseasSort,
-  setDomesticFilter_conditions, setDomesticFuzzy_conditions, setDomesticSort,
-} from '@/store'
+import {useDispatch} from 'react-redux'
+
 import {
   captain,
   units,
@@ -29,107 +31,12 @@ import {
   relic,
   fitness,
   hex,
+  indexMap,
+  metricsMap,
 } from '@/constants'
 import { parseInt } from 'lodash';
 
-function reversePrettyButtons(asc) {
-  return asc === "asc" ? "desc" : "asc"
-}
-
-function clickPrettyButtons({ clickOption, active, win_rate, avg_duration, avg_damage, avg_heal }) {
-  return {
-    // 当前激活的是 win_rate 并且点击的也是 win_rate 则反向，否则保持原状
-    win_rate: active === 'win_rate' && clickOption === active ? reversePrettyButtons(win_rate) : win_rate,
-    avg_duration: active === 'avg_duration' && clickOption === active ? reversePrettyButtons(avg_duration) : avg_duration,
-    avg_damage: active === 'avg_damage' && clickOption === active ? reversePrettyButtons(avg_damage) : avg_damage,
-    avg_heal: active === 'avg_heal' && clickOption === active ? reversePrettyButtons(avg_heal) : avg_heal,
-    // 激活项最终一定是 clickOption
-    active: clickOption,
-  }
-}
-
-function getPrettyButtons({active, win_rate, avg_duration, avg_damage, avg_heal }) {
-  return [
-    {
-      label: '胜率',
-      option: 'win_rate',
-      sort: win_rate,
-      active: active === 'win_rate'
-    },
-    {
-      label: '平均总治疗',
-      option: 'avg_heal',
-      sort: avg_heal,
-      active: active === 'avg_heal'
-    },
-    {
-      label: '平均总输出',
-      option: 'avg_damage',
-      sort: avg_damage,
-      active: active === 'avg_damage'
-    },
-    {
-      label: '平均战斗时长',
-      option: 'avg_duration',
-      sort: avg_duration,
-      active: active === 'avg_duration'
-    },
-  ]
-
-}
-
-function getSelected(ids) {
-  const ret = [];
-  if (ids && ids.length) {
-    for (const id of ids) {
-      if (id !== 0 && id !== null && id !== undefined) {
-        ret.push(`${id}`);
-      }
-    }
-  }
-  return ret;
-}
-
 const LayoutSearch = ({type}) => {
-  const {
-    robotCondtions,
-    robotResults,
-    overseasCondtions,
-    overseasResults,
-    domesticCondtions,
-    domesitcResults,
-  } = useSelector(state => state)
-
-  const typeMap = {
-    "robot": {
-      conditions: robotCondtions,
-      results: robotResults,
-      setQueryResult: setRobotQueryResult,
-      setDetailResult: setRobotDetailResult,
-      setFilter_conditions: setRobotFilter_conditions,
-      setFuzzy_conditions: setRobotFuzzy_conditions,
-      setSort: setRobotSort,
-    },
-    "overseas": {
-      conditions: overseasCondtions,
-      results: overseasResults,
-      setQueryResult: setOverseasQueryResult,
-      setDetailResult: setOverseasDetailResult,
-      setFilter_conditions: setOverseasFilter_conditions,
-      setFuzzy_conditions: setOverseasFuzzy_conditions,
-      setSort: setOverseasSort,
-    },
-    "domestic": {
-      conditions: domesticCondtions,
-      results: domesitcResults,
-      setQueryResult: setDomesticQueryResult,
-      setDetailResult: setDomesticDetailResult,
-      setFilter_conditions: setDomesticFilter_conditions,
-      setFuzzy_conditions: setDomesticFuzzy_conditions,
-      setSort: setDomesticSort,
-    }
-  }
-
   const {
     conditions,
     results,
@@ -138,7 +45,7 @@ const LayoutSearch = ({type}) => {
     setFilter_conditions,
     setFuzzy_conditions,
     setSort,
-  } = typeMap[type]
+  } = useSearch(type)
   
 
   const [loading, setLoading] = useState(false);
@@ -174,7 +81,7 @@ const LayoutSearch = ({type}) => {
               }
            }))
           }} maxCount={1} options={getValueLabel(captain)}/>},
-        {name: '小兵数量', content: <NumberSelector number={conditions.filter_conditions.units.size} setNumber={(number) => {
+        {name: '小兵数量', content: <NumberSelector operate={conditions.filter_conditions.units.operate} number={conditions.filter_conditions.units.size} setNumber={(number) => {
           dispatch(setFilter_conditions({
            ...conditions.filter_conditions,
             units: {
@@ -310,25 +217,163 @@ const LayoutSearch = ({type}) => {
       })
     }
   ]
+  // TODO
+  const getTitle = () => {
+    const start = results.queryResult.start
+    const end = results.queryResult.end
+    const active = results.queryResult.active
+    const sort = results.queryResult.sort
+    return start && end && `根据 ${active} ${sort}，时间段：${moment(start).format('MM-DD HH:mm')} 至 ${moment(end).format('MM-DD HH:mm')}`
+  }
+  const getLines = () => {
+    const current = results.queryResult.current || 1;
+    const pageSize = results.queryResult.pageSize || 10;
+    const list = results.queryResult.list || [];
+    const active = results.queryResult.active || "win_rate";
+    
+    // 计算分页起始位置
+    const start = (current - 1) * pageSize;
+    const end = start + pageSize;
+    
+    // 返回截取后的数据
+    return list.slice(start, end).map(result => {
+      const details = parseKey(result.key, indexMap)
+      return {
+        key: result.key,
+        details: details,
+        name: `【${`${details[0].concat(details[1])}`}】 (样本数：${result.metrics.count})`,
+        value: getMetric(result.metrics, active),
+        metrics: result.units_metrics,
+    }
+    });
+  }
+
+  const getDetailHorizontalBarList = () => {
+    const ret = []
+
+    // 找出最大值
+    const maxValueMap = {
+      "avg_damage": 0.0,
+      "avg_heal": 0.0,
+    }
+    const dataMap = {}
+    const namesMap = {}
+    for (const [key, value] of results.detailResult) {
+      dataMap[key] = {
+        "avg_damage": {
+          color: "#2D59C6",
+          values: [],
+        },
+        "avg_heal": {
+          color: "#76E0D6",
+          values: [],
+        },
+      }
+      namesMap[key] = []
+      for (const metric of value.metrics) {
+        namesMap[key].unshift(captain[`${metric.unit_id}`] || units[`${metric.unit_id}`])
+        maxValueMap["avg_damage"] = Math.max(maxValueMap["avg_damage"], metric.avg_damage)
+        dataMap[key]["avg_damage"].values.unshift(metric.avg_damage)
+        maxValueMap["avg_heal"] = Math.max(maxValueMap["avg_heal"], metric.avg_heal)
+        dataMap[key]["avg_heal"].values.unshift(metric.avg_heal)
+      }
+    }
+
+    for (const [key, value] of results.detailResult) {
+      // 加工 value => {details, active, data:{"":{color:"",values:[]}}}
+      const map = {}
+      map.set(metricsMap["avg_damage"], dataMap[key]["avg_damage"])
+      map.set(metricsMap["avg_heal"], dataMap[key]["avg_heal"])
+      ret.push(<DetailHorizontalBar
+        key={key}
+        names={namesMap[key]} 
+        max={maxValueMap[value.active]} 
+          data={{
+          details: value.details,
+          active: metricsMap[value.active],
+          data: map
+        }} 
+        switchMetrics={(name) => {
+          if(results.detailResult[key]) {
+            const tmp = {...results.detailResult}
+            tmp[key] = {
+              ...tmp[key],
+              active: metricsMap[name]
+            }
+            dispatch(setDetailResult(tmp))
+          }
+        }} 
+        del={() => {
+          if(results.detailResult[key]) {
+            const tmp = {...results.detailResult}
+            delete tmp[key]
+            dispatch(setDetailResult(tmp))
+          }
+        }}
+      />)
+    }
+    return ret
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {loading && <LoadingAnimation/>}
       <div style={{ flex: 1, minHeight: 0 }}>
         <EchartsSlitter 
           top={<CollapseItems style={{ flex: 1, minWidth: '1750px'}} items={items}/>} 
-          left={<QueryHorizontalBar submit={async () => {
-            setLoading(true)
-            const res = await request({
-              url: "/strength/search",
-              method: "post",
-              data: {
-                type: type,
-                ...conditions,
+          left={<QueryHorizontalBar 
+            max={results.queryResult.maxValue}
+            current={results.queryResult.current} 
+            total={results.queryResult.total}
+            pageSize={results.queryResult.pageSize}
+            changePage={(current, pageSize) => {
+              // 如果 size 变化，自动跳到第一页
+              if (results.queryResult.pageSize !== pageSize) {
+                current = 1
               }
-            })
-            console.log(res)
-            setLoading(false)
-          }} />} 
+              dispatch(setQueryResult({
+                ...results.queryResult,
+                current: current,
+                pageSize: pageSize
+              }))
+            }} title={getTitle()} lines={getLines()} click={(params) => {
+              if(!results.detailResult[params.data.key]) {
+                const tmp = {...results.detailResult}
+                tmp[params.data.key] = {
+                  ...params.data,
+                  active: "avg_damage"
+                }
+                dispatch(setDetailResult(tmp))
+              }
+            }} submit={async () => {
+              setLoading(true)
+              const res = await request({
+                url: "/strength/search",
+                method: "post",
+                data: {
+                  type: type,
+                  ...conditions,
+                }
+              })
+              
+              // 计算最大值
+              const maxValue = res.reduce((max, result) => {
+                const value = getMetric(result.metrics, conditions.sort.active);
+                return value > max ? value : max;
+              }, -Infinity);
+              dispatch(setQueryResult({
+                start: conditions.filter_conditions.time_range.start,
+                end: conditions.filter_conditions.time_range.end,
+                current: 1,
+                pageSize: results.queryResult.pageSize || 10,
+                total: res.length,
+                active: conditions.sort.active, 
+                sort: getSort(conditions.sort, conditions.sort.active),
+                list: res,
+                maxValue: maxValue
+              }))
+              setLoading(false)
+            }} />} 
           right={
             <div style={{ 
               display: 'flex',
@@ -338,12 +383,9 @@ const LayoutSearch = ({type}) => {
               boxSizing: 'border-box',
               gap: '20px'
             }}>
-              <DetailHorizontalBar/>
-              <DetailHorizontalBar/>
-              <DetailHorizontalBar/>
+              {getDetailHorizontalBarList()}
             </div>
           }
-          pagination={<QueryPagination />}
         />
       </div>
     </div>

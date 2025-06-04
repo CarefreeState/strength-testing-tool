@@ -2,12 +2,13 @@ import React from 'react';
 import { Button, Popconfirm } from 'antd';
 import deleteIcon from '@/assets/delete.png'
 
-const OkButton = () => (
+const OkButton = ({del}) => (
   <Popconfirm
     title="Delete the task"
     description="Are you sure to delete this task?"
     okText="Yes"
     cancelText="No"
+    onConfirm={del}
   >
     <Button 
       danger 
@@ -20,6 +21,7 @@ const OkButton = () => (
     >
       <img 
         src={deleteIcon} 
+        alt="delete icon"
         style={{
           width: '100%',
           height: '100%',

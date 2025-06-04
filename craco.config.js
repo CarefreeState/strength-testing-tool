@@ -8,6 +8,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src/'),
     },
   },
+  // 处理跨域
   devServer: {
     port: 3000,
     proxy: {

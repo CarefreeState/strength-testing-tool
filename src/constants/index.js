@@ -135,6 +135,14 @@ const hex = {
   '10041': '金色-熊人坦克队长专属强化'
 }
 
+const indexMap = [captain, units, advanced_power, relic, fitness, hex]
+
+const metricsMap = {
+  "平均输出": "avg_damage",
+  "平均治疗": "avg_heal",
+  "avg_damage": "平均输出",
+  "avg_heal": "平均治疗",
+}
 
 export {
   captain,
@@ -143,6 +151,8 @@ export {
   relic,
   fitness,
   hex,
+  indexMap,
+  metricsMap,
 }
 
 export {

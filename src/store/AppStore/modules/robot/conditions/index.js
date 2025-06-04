@@ -35,7 +35,7 @@ const conditionsStore = createSlice({
     sort: {
       active: "win_rate",
       win_rate: "desc",
-      avg_duration: "asc",
+      avg_duration: "desc",
       avg_damage: "desc",
       avg_heal: "desc"
     },

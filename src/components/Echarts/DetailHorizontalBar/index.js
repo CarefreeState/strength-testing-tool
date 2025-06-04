@@ -18,24 +18,52 @@ echarts.use([
   CanvasRenderer
 ]);
 
-const DetailHorizontalBar = () => {
+const getSelected = (active, map) => {
+  const ret = {}
+  for (const key of map.keys()) {
+    ret[key] = key === active
+  }
+  return ret
+}
+
+const getSeries = (map) => {
+  const ret = []
+  for (const [key, value] of map) {
+    ret.push({
+      name: key,
+      type: 'bar',
+      label: {
+        show: true,
+        position: 'right',
+        formatter: '{c}'
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      itemStyle: {
+        color: value.color
+      },
+      data: value.values
+    })
+  }
+  return ret
+}
+
+const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
+  console.log(names)
+  console.log(max)
+  console.log(data)
+  console.log(data.data)
+  console.log(data.data.keys())
+
+
+
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
   useEffect(() => {
     const chartDom = chartRef.current;
     chartInstance.current = echarts.init(chartDom);
-
-    // 生成15条测试数据
-    const yAxisData = Array.from({length: 5}, (_, i) => `测试项目${i+1}`);
-    const dataValues = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
-
-    const generateData = () => {
-      return dataValues.map((value) => ({
-        value
-      }));
-    };
-    
     // 初始化图表
     const option = {
       tooltip: {
@@ -45,11 +73,8 @@ const DetailHorizontalBar = () => {
         }
       },
       legend: {
-        data: ['指标1', '指标2'],
-        selected: {
-          '指标1': true,
-          '指标2': false,
-        } 
+        data: [...data.data.keys()],
+        selected: getSelected(data.active, data.data)
       },
       grid: {
         left: '3%',
@@ -64,8 +89,7 @@ const DetailHorizontalBar = () => {
             type: 'dashed'
           }
         },
-        max: 120,  // 关键修改：设置x轴最大值为100
-        min: 0     // 可选：设置x轴最小值为0
+        max: Math.ceil(max * 1.2),
       },
       yAxis: {
         type: 'category',
@@ -84,44 +108,12 @@ const DetailHorizontalBar = () => {
           }
         },
         axisTick: { show: false },
-        data: yAxisData
+        data: names
       },
-      series: [
-        {
-          name: '指标1',
-          type: 'bar',
-          label: {
-            show: true,
-            position: 'right',
-            formatter: '{c}'
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          itemStyle: {
-            color: '#2D59C6'
-          },
-          data: generateData()
-        },
-        {
-          name: '指标2',
-          type: 'bar',
-          label: {
-            show: true,
-            position: 'right',
-            formatter: '{c}'
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          itemStyle: {
-            color: '#76E0D6'
-          },
-          data: generateData()
-        }
-      ]
+      series: getSeries(data.data)
     };
     
+    chartInstance.current.on('legendselectchanged', switchMetrics)
     chartInstance.current.setOption(option);
 
     // 添加防抖的resize监听
@@ -143,7 +135,7 @@ const DetailHorizontalBar = () => {
       resizeObserver.disconnect();
       chartInstance.current?.dispose();
     };
-  }, []);
+  }, []); // TODO
 
   return (
     <>
@@ -179,7 +171,7 @@ const DetailHorizontalBar = () => {
           transformOrigin: 'top right',
           transition: 'all 0.3s ease'
         }}>
-          <OkButton />
+          <OkButton del={del}/>
         </div>
       </div></div>
     </>

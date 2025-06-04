@@ -4,8 +4,17 @@ import { createSlice } from "@reduxjs/toolkit";
 const resultsStore = createSlice({
   name: "robotResults",
   initialState: {
-    queryResult: [],
-    detailResult: []
+    queryResult: {
+      start: null,
+      end: null,
+      current: 1,
+      total: null,
+      pageSize: 10,
+      active: '',
+      maxValue: 0,
+      list: []
+    },
+    detailResult: {}
   },
   
   reducers: {

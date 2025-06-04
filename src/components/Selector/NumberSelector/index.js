@@ -3,9 +3,9 @@ import { InputNumber, Select } from 'antd';
 
 const { Option } = Select;
 
-const SelectBefore = ({setOperate}) => {
+const SelectBefore = ({operate, setOperate}) => {
   return (
-    <Select defaultValue="eq" style={{ width: 75 }} onChange={setOperate}>
+    <Select defaultValue={operate} style={{ width: 75 }} onChange={setOperate}>
       <Option value="le">≤</Option>
       <Option value="eq">=</Option>
       <Option value="ge">≥</Option>
@@ -13,11 +13,11 @@ const SelectBefore = ({setOperate}) => {
   );
 }
 
-const NumberSelector = ({number, setNumber, setOperate, min, max}) => (
+const NumberSelector = ({operate, number, setNumber, setOperate, min, max}) => (
   <InputNumber 
     max={max} 
     min={min}
-    addonBefore={<SelectBefore setOperate={setOperate}/>} 
+    addonBefore={<SelectBefore operate={operate} setOperate={setOperate}/>} 
     defaultValue={number}
     onChange={setNumber} 
   />

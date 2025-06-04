@@ -16,6 +16,10 @@ const store = configureStore({
     domesticCondtions: domesticConditionsReducer,
     domesitcResults: domesticResultsReducer,
   },
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware({
+      serializableCheck: false // 禁用序列化检查
+  })
 })
 
 const AppStore = ({children}) => {

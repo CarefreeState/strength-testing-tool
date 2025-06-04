@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as echarts from 'echarts/core';
 import {
   TitleComponent,
@@ -18,30 +18,49 @@ echarts.use([
   CanvasRenderer
 ]);
 
-const QueryHorizontalBar = ({submit}) => {
+const generateData = (lines, max) => {
+  const labelRight = { position: 'right' };
+  const ret = []
+  for (const line of lines) {
+    ret.unshift({
+      ...line,
+      label: line.value <= max * 0.5 && labelRight
+    })
+  }
+  return ret
+};
+
+const generateName = (lines) => {
+  const ret = []
+  for (const line of lines) {
+    ret.unshift(line.name)
+  }
+  return ret
+}
+
+// [{name, value}]
+const QueryHorizontalBar = ({max, title, lines, click, submit, changePage, current, total, pageSize}) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+
+  // 这个作为 reload 的标志，防止其他组件的影响
+  const [refresh, setRefresh] = useState(0)
+  const reload = () => {
+    setRefresh(refresh + 1)
+  }
 
   useEffect(() => {
     const chartDom = chartRef.current;
     chartInstance.current = echarts.init(chartDom);
-    const labelRight = { position: 'right' };
+    
 
     // 生成15条测试数据
-    const yAxisData = Array.from({length: 15}, (_, i) => `测试项目${i+1}`);
-    const dataValues = Array.from({length: 15}, () => Math.floor(Math.random() * 100));
-
-    const generateData = () => {
-      const maxValue = Math.max(...dataValues);
-      return dataValues.map((value) => ({
-        value,
-        label: value < maxValue * 0.5 && labelRight
-      }));
-    };
+    const yAxisData = generateName(lines)
+    const dataValues = generateData(lines, max)
 
     const option = {
       title: {
-        text: 'Bar Chart with Negative ValueEE',
+        text: title,
         top: 20,  // 增加标题与顶部的距离
         left: 'center'
       },
@@ -65,7 +84,8 @@ const QueryHorizontalBar = ({submit}) => {
           lineStyle: {
             type: 'dashed'
           }
-        }
+        },
+        max: max
       },
       yAxis: {
         type: 'category',
@@ -80,7 +100,7 @@ const QueryHorizontalBar = ({submit}) => {
           show: true,
           formatter: function(value, index) {
             // 通过索引获取对应的数值
-            return `${dataValues[index]}`;
+            return `${dataValues[index].value}`;
           }
         },
         axisTick: { show: false },
@@ -98,12 +118,13 @@ const QueryHorizontalBar = ({submit}) => {
           itemStyle: {
             color: '#2D59C6' // 设置柱子颜色为主题色
           },
-          data: generateData()
+          data: dataValues
         }
       ]
     };
     
     chartInstance.current.setOption(option);
+    chartInstance.current.on('click', click);
 
     // 添加防抖的resize监听
     let resizeTimer;
@@ -124,10 +145,10 @@ const QueryHorizontalBar = ({submit}) => {
       resizeObserver.disconnect();
       chartInstance.current?.dispose();
     };
-  }, []);
+  }, [refresh]);
 
   return (
-    <div style={{ flex: 1, minWidth: '750px', minHeight: '750px', position: 'relative', width: '100%', height: '100%' }}>
+    <div style={{ flex: 1, minWidth: '1500px', minHeight: '750px', position: 'relative', width: '100%', height: '100%' }}>
       <div ref={chartRef} style={{ width: '100%', height: '95%' }} />
       <div style={{ 
         width: '100%', 
@@ -139,7 +160,10 @@ const QueryHorizontalBar = ({submit}) => {
       }}>
         {/* 如果输出条件（包括排序、指标）与原来不一样，需要刷新分页参数 */}
         <SearchButton 
-          onClick={submit} 
+          onClick={async () => {
+            await submit()
+            reload()
+          }} 
           buttonTheme={{
             defaultBg: '#26CDD5',
             defaultBorderColor: '#26CDD5',
@@ -149,7 +173,10 @@ const QueryHorizontalBar = ({submit}) => {
             defaultHoverColor: '#ffffff',
           }}      
         />
-        <QueryPagination />
+        <QueryPagination current={current} total={total}  pageSize={pageSize} changePage={(current, pageSize) => {
+          changePage(current, pageSize)
+          reload()
+        }} />
       </div>
     </div>
     

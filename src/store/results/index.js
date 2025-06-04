@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const resultsStore = createSlice({
-  name: "domesticResults",
+  name: "robotResults",
   initialState: {
     queryResult: {
       start: null,
@@ -10,18 +10,18 @@ const resultsStore = createSlice({
       current: 1,
       total: null,
       pageSize: 10,
-      active: '',
+      active: 'win_rate',
       maxValue: 0,
       list: []
     },
-    detailResult: {}
+    detailResult: null
   },
   
   reducers: {
-    setDomesticQueryResult: (state, action) => {
+    setRobotQueryResult: (state, action) => {
       state.queryResult = action.payload;
     },
-    setDomesticDetailResult: (state, action) => {
+    setRobotDetailResult: (state, action) => {
       state.detailResult = action.payload;
     },
   },
@@ -29,13 +29,13 @@ const resultsStore = createSlice({
 
 // 返回修改的函数
 const { 
-  setDomesticQueryResult,
-  setDomesticDetailResult,
+  setRobotQueryResult,
+  setRobotDetailResult,
 } = resultsStore.actions;
 
 export { 
-  setDomesticQueryResult,
-  setDomesticDetailResult,
+  setRobotQueryResult,
+  setRobotDetailResult,
 };
 
 // 返回 reducer
