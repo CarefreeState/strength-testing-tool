@@ -136,6 +136,7 @@ const hex = {
 }
 
 const indexMap = [captain, units, advanced_power, relic, fitness, hex]
+const indexNameMap = ["队长", "小兵", "进修", "遗物", "装备", "专属强化"]
 
 const metricsMap = {
   "平均输出": "avg_damage",
@@ -156,6 +157,7 @@ export {
   fitness,
   hex,
   indexMap,
+  indexNameMap,
   metricsMap,
 }
 

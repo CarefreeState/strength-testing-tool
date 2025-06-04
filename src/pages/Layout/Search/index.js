@@ -32,6 +32,7 @@ import {
   fitness,
   hex,
   indexMap,
+  indexNameMap,
   metricsMap,
 } from '@/constants'
 import { parseInt } from 'lodash';
@@ -47,6 +48,11 @@ const LayoutSearch = ({type}) => {
     setSort,
   } = useSearch(type)
   
+  // TODO 任意处刷新问题！？
+  const [detailsRefresh, setDetailsRefresh] = useState(0)
+  const detailsReload = () => {
+    setDetailsRefresh(detailsRefresh + 1)
+  }
 
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -230,6 +236,7 @@ const LayoutSearch = ({type}) => {
       return ""
     }
   }
+
   const getLines = () => {
     const current = results.queryResult.current || 1;
     const pageSize = results.queryResult.pageSize || 10;
@@ -252,10 +259,7 @@ const LayoutSearch = ({type}) => {
     }
     });
   }
-  const [detailsRefresh, setDetailsRefresh] = useState(0)
-  const detailsReload = () => {
-    setDetailsRefresh(detailsRefresh + 1)
-  }
+  
 
   const getQueryHorizontalBar = () => {
     return (
@@ -319,6 +323,8 @@ const LayoutSearch = ({type}) => {
     )
   }
 
+
+
   const DetailHorizontalBarList = () => {
     const ret = []
     // 找出最大值
@@ -362,7 +368,12 @@ const LayoutSearch = ({type}) => {
         names={namesMap[item.key]} 
         max={maxValueMap[item.active]} 
         data={{
-          details: item.details,
+          details: item.details.map((item, index) => {
+            return {
+              name: indexNameMap[index],
+              content: `${item}`,
+            }
+          }),
           active: metricsMap[item.active],
           data: map
         }} 

@@ -141,14 +141,7 @@ const DetailHorizontalBar = ({refresh, names, max, switchMetrics, data, del}) =>
             active: false,
             label: '详情',
             cardinality: 0.5,
-            descriptions: [
-              {name: '是否启动', content: 'Content 1'},
-              {name: 'Name 2', content: 'Content 2'},
-              {name: 'Name 3', content: 'Content 3'},
-              {name: 'Name 4', content: 'Content 4'},
-              {name: 'Name 5', content: 'Content 5'},
-              {name: 'Name 6', content: 'Content 6'},
-            ]
+            descriptions: data.details
           }
         ]}/>
       </div>
