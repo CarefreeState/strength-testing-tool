@@ -14,15 +14,36 @@ const resultsStore = createSlice({
       maxValue: 0,
       list: []
     },
-    detailResult: {}
+    detailResult: {
+      list: []
+    },
   },
   
   reducers: {
     setRobotQueryResult: (state, action) => {
       state.queryResult = action.payload;
     },
-    setRobotDetailResult: (state, action) => {
-      state.detailResult = action.payload;
+    setRobotDetailResult: (state, {payload : {appendElem, updateElem, list}}) => {
+      if (appendElem) {
+        if(!state.detailResult.list.find(item => item.key === appendElem.key)) {
+          state.detailResult = {
+            list: [...state.detailResult.list, appendElem]
+          }
+        }
+      }
+      if(updateElem) {
+        const tmp = []
+          for (const elem of state.detailResult.list) {
+            tmp.push({
+              ...elem,
+              active: elem.key === updateElem.key ? updateElem.active : elem.active
+            })
+          }
+          state.detailResult = {list: tmp}
+      }
+      if (list) {
+        state.detailResult = {list: list}
+      }
     },
   },
 });

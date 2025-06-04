@@ -14,15 +14,26 @@ const resultsStore = createSlice({
       maxValue: 0,
       list: []
     },
-    detailResult: {}
+    detailResult: {
+      list: []
+    },
   },
   
   reducers: {
     setOverseasQueryResult: (state, action) => {
       state.queryResult = action.payload;
     },
-    setOverseasDetailResult: (state, action) => {
-      state.detailResult = action.payload;
+    setOverseasDetailResult: (state, {payload : {appendElem, list}}) => {
+      if (appendElem) {
+        if(!state.detailResult.list.find(item => item.key === appendElem.key)) {
+          state.detailResult = {
+            list: [...state.detailResult.list, appendElem]
+          }
+        }
+      }
+      if (list) {
+        state.detailResult = {list: list}
+      }
     },
   },
 });

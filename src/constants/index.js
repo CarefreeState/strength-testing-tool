@@ -140,8 +140,12 @@ const indexMap = [captain, units, advanced_power, relic, fitness, hex]
 const metricsMap = {
   "平均输出": "avg_damage",
   "平均治疗": "avg_heal",
+  "胜率": "win_rate",
+  "平均时长" : "avg_duration",
   "avg_damage": "平均输出",
   "avg_heal": "平均治疗",
+  "win_rate": "胜率",
+  "avg_duration": "平均时长",
 }
 
 export {

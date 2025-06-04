@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
@@ -20,7 +20,7 @@ echarts.use([
 
 const getSelected = (active, map) => {
   const ret = {}
-  for (const key of map.keys()) {
+  for (const key of Object.keys(map)) {
     ret[key] = key === active
   }
   return ret
@@ -28,7 +28,7 @@ const getSelected = (active, map) => {
 
 const getSeries = (map) => {
   const ret = []
-  for (const [key, value] of map) {
+  for (const [key, value] of Object.entries(map)) {
     ret.push({
       name: key,
       type: 'bar',
@@ -49,15 +49,7 @@ const getSeries = (map) => {
   return ret
 }
 
-const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
-  console.log(names)
-  console.log(max)
-  console.log(data)
-  console.log(data.data)
-  console.log(data.data.keys())
-
-
-
+const DetailHorizontalBar = ({refresh, names, max, switchMetrics, data, del}) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -73,7 +65,7 @@ const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
         }
       },
       legend: {
-        data: [...data.data.keys()],
+        data: Object.keys(data.data),
         selected: getSelected(data.active, data.data)
       },
       grid: {
@@ -89,7 +81,7 @@ const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
             type: 'dashed'
           }
         },
-        max: Math.ceil(max * 1.2),
+        max: Math.ceil(max * 1.5),
       },
       yAxis: {
         type: 'category',
@@ -135,7 +127,7 @@ const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
       resizeObserver.disconnect();
       chartInstance.current?.dispose();
     };
-  }, []); // TODO
+  }, [refresh]);
 
   return (
     <>
@@ -164,7 +156,7 @@ const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
         <div ref={chartRef} style={{ width: '100%', height: '100%' }} />
         <div style={{
           position: 'absolute',
-          top: '-10%',
+          top: '0%',
           right: '0%',
           zIndex: 10,
           transform: 'scale(calc(min(100vw, 100vh) / 1500))',

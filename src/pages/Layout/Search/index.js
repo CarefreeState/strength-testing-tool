@@ -217,13 +217,18 @@ const LayoutSearch = ({type}) => {
       })
     }
   ]
-  // TODO
+  
   const getTitle = () => {
     const start = results.queryResult.start
     const end = results.queryResult.end
     const active = results.queryResult.active
     const sort = results.queryResult.sort
-    return start && end && `根据 ${active} ${sort}，时间段：${moment(start).format('MM-DD HH:mm')} 至 ${moment(end).format('MM-DD HH:mm')}`
+    if(active && sort) {
+      return `【${metricsMap[active]}】【${sort === "asc" ? "升序" : "降序"}】` + 
+      `时间段为 ${(start && moment(start).format('[MM-DD HH:mm')) || "(-∞"}, ${(end && moment(end).format('MM-DD HH:mm]')) || "+∞)"}`
+    }else {
+      return ""
+    }
   }
   const getLines = () => {
     const current = results.queryResult.current || 1;
@@ -247,10 +252,75 @@ const LayoutSearch = ({type}) => {
     }
     });
   }
+  const [detailsRefresh, setDetailsRefresh] = useState(0)
+  const detailsReload = () => {
+    setDetailsRefresh(detailsRefresh + 1)
+  }
 
-  const getDetailHorizontalBarList = () => {
+  const getQueryHorizontalBar = () => {
+    return (
+      <QueryHorizontalBar 
+        max={results.queryResult.maxValue}
+        current={results.queryResult.current} 
+        total={results.queryResult.total}
+        pageSize={results.queryResult.pageSize}
+        changePage={(current, pageSize) => {
+          // 如果 size 变化，自动跳到第一页
+          if (results.queryResult.pageSize !== pageSize) {
+            current = 1
+          }
+          dispatch(setQueryResult({
+            ...results.queryResult,
+            current: current,
+            pageSize: pageSize
+          }))
+        }} title={getTitle()} lines={getLines()} click={(params) => {
+          dispatch(setDetailResult({
+            appendElem: {
+              ...params.data,
+              active: "avg_damage"
+            }
+          }))
+          detailsReload()
+        }} submit={async () => {
+          setLoading(true)
+          const res = await request({
+            url: "/strength/search",
+            method: "post",
+            data: {
+              type: type,
+              ...conditions,
+            }
+          })
+          
+          // 计算最大值
+          const maxValue = res.reduce((max, result) => {
+            const value = getMetric(result.metrics, conditions.sort.active);
+            return value > max ? value : max;
+          }, -Infinity);
+          dispatch(setQueryResult({
+            start: conditions.filter_conditions.time_range.start,
+            end: conditions.filter_conditions.time_range.end,
+            current: 1,
+            pageSize: results.queryResult.pageSize || 10,
+            total: res.length,
+            active: conditions.sort.active, 
+            sort: getSort(conditions.sort, conditions.sort.active),
+            list: res,
+            maxValue: maxValue
+          }))
+          // TODO 清空右栏（避免不一致）  
+          dispatch(setDetailResult({
+            list: []
+          }))
+          setLoading(false)
+        }} 
+      />
+    )
+  }
+
+  const DetailHorizontalBarList = () => {
     const ret = []
-
     // 找出最大值
     const maxValueMap = {
       "avg_damage": 0.0,
@@ -258,8 +328,9 @@ const LayoutSearch = ({type}) => {
     }
     const dataMap = {}
     const namesMap = {}
-    for (const [key, value] of results.detailResult) {
-      dataMap[key] = {
+
+    for (const item of results.detailResult.list) {
+      dataMap[item.key] = {
         "avg_damage": {
           color: "#2D59C6",
           values: [],
@@ -269,50 +340,62 @@ const LayoutSearch = ({type}) => {
           values: [],
         },
       }
-      namesMap[key] = []
-      for (const metric of value.metrics) {
-        namesMap[key].unshift(captain[`${metric.unit_id}`] || units[`${metric.unit_id}`])
+
+      namesMap[item.key] = []
+      for (const metric of item.metrics) {
+        namesMap[item.key].unshift(`${captain[`${metric.unit_id}`] || units[`${metric.unit_id}`]}（样本数：${metric.count}）`)
         maxValueMap["avg_damage"] = Math.max(maxValueMap["avg_damage"], metric.avg_damage)
-        dataMap[key]["avg_damage"].values.unshift(metric.avg_damage)
+        dataMap[item.key]["avg_damage"].values.unshift(metric.avg_damage)
         maxValueMap["avg_heal"] = Math.max(maxValueMap["avg_heal"], metric.avg_heal)
-        dataMap[key]["avg_heal"].values.unshift(metric.avg_heal)
+        dataMap[item.key]["avg_heal"].values.unshift(metric.avg_heal)
       }
     }
 
-    for (const [key, value] of results.detailResult) {
+    for (const item of results.detailResult.list) {
       // 加工 value => {details, active, data:{"":{color:"",values:[]}}}
       const map = {}
-      map.set(metricsMap["avg_damage"], dataMap[key]["avg_damage"])
-      map.set(metricsMap["avg_heal"], dataMap[key]["avg_heal"])
+      map[metricsMap["avg_damage"]] = dataMap[item.key]["avg_damage"]
+      map[metricsMap["avg_heal"]] = dataMap[item.key]["avg_heal"]
       ret.push(<DetailHorizontalBar
-        key={key}
-        names={namesMap[key]} 
-        max={maxValueMap[value.active]} 
-          data={{
-          details: value.details,
-          active: metricsMap[value.active],
+        refresh={detailsRefresh}
+        key={item.key}
+        names={namesMap[item.key]} 
+        max={maxValueMap[item.active]} 
+        data={{
+          details: item.details,
+          active: metricsMap[item.active],
           data: map
         }} 
-        switchMetrics={(name) => {
-          if(results.detailResult[key]) {
-            const tmp = {...results.detailResult}
-            tmp[key] = {
-              ...tmp[key],
+        switchMetrics={({name}) => {
+          dispatch(setDetailResult({
+            updateElem: {
+              key: item.key,
               active: metricsMap[name]
             }
-            dispatch(setDetailResult(tmp))
-          }
+          }))
+          detailsReload()
         }} 
         del={() => {
-          if(results.detailResult[key]) {
-            const tmp = {...results.detailResult}
-            delete tmp[key]
-            dispatch(setDetailResult(tmp))
+          if(results.detailResult.list.find(result => result.key === item.key)) {
+            dispatch(setDetailResult({
+              list: results.detailResult.list.filter(result => result.key !== item.key)
+            }))
           }
         }}
       />)
     }
-    return ret
+    return (
+      <div style={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        padding: '20px',
+        boxSizing: 'border-box',
+        gap: '20px'
+      }}>
+        {ret}
+      </div>
+    )
   }
 
   return (
@@ -321,71 +404,8 @@ const LayoutSearch = ({type}) => {
       <div style={{ flex: 1, minHeight: 0 }}>
         <EchartsSlitter 
           top={<CollapseItems style={{ flex: 1, minWidth: '1750px'}} items={items}/>} 
-          left={<QueryHorizontalBar 
-            max={results.queryResult.maxValue}
-            current={results.queryResult.current} 
-            total={results.queryResult.total}
-            pageSize={results.queryResult.pageSize}
-            changePage={(current, pageSize) => {
-              // 如果 size 变化，自动跳到第一页
-              if (results.queryResult.pageSize !== pageSize) {
-                current = 1
-              }
-              dispatch(setQueryResult({
-                ...results.queryResult,
-                current: current,
-                pageSize: pageSize
-              }))
-            }} title={getTitle()} lines={getLines()} click={(params) => {
-              if(!results.detailResult[params.data.key]) {
-                const tmp = {...results.detailResult}
-                tmp[params.data.key] = {
-                  ...params.data,
-                  active: "avg_damage"
-                }
-                dispatch(setDetailResult(tmp))
-              }
-            }} submit={async () => {
-              setLoading(true)
-              const res = await request({
-                url: "/strength/search",
-                method: "post",
-                data: {
-                  type: type,
-                  ...conditions,
-                }
-              })
-              
-              // 计算最大值
-              const maxValue = res.reduce((max, result) => {
-                const value = getMetric(result.metrics, conditions.sort.active);
-                return value > max ? value : max;
-              }, -Infinity);
-              dispatch(setQueryResult({
-                start: conditions.filter_conditions.time_range.start,
-                end: conditions.filter_conditions.time_range.end,
-                current: 1,
-                pageSize: results.queryResult.pageSize || 10,
-                total: res.length,
-                active: conditions.sort.active, 
-                sort: getSort(conditions.sort, conditions.sort.active),
-                list: res,
-                maxValue: maxValue
-              }))
-              setLoading(false)
-            }} />} 
-          right={
-            <div style={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100%',
-              padding: '20px',
-              boxSizing: 'border-box',
-              gap: '20px'
-            }}>
-              {getDetailHorizontalBarList()}
-            </div>
-          }
+          left={getQueryHorizontalBar()} 
+          right={<DetailHorizontalBarList />}
         />
       </div>
     </div>
