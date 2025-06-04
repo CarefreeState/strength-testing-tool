@@ -23,7 +23,7 @@ const resultsStore = createSlice({
     setRobotQueryResult: (state, action) => {
       state.queryResult = action.payload;
     },
-    setRobotDetailResult: (state, {payload : {appendElem, updateElem, list}}) => {
+    setRobotDetailResult: (state, {payload : {appendElem, updateElem, deleteElem, list}}) => {
       if (appendElem) {
         if(!state.detailResult.list.find(item => item.key === appendElem.key)) {
           state.detailResult = {
@@ -41,8 +41,15 @@ const resultsStore = createSlice({
           }
           state.detailResult = {list: tmp}
       }
+      if(deleteElem) {
+        state.detailResult = {
+          list: state.detailResult.list.filter(item => item.key !== deleteElem.key)
+        }
+      }
       if (list) {
-        state.detailResult = {list: list}
+        state.detailResult = {
+          list: list
+        }
       }
     },
   },

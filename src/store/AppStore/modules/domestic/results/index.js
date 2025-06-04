@@ -23,7 +23,7 @@ const resultsStore = createSlice({
     setDomesticQueryResult: (state, action) => {
       state.queryResult = action.payload;
     },
-    setDomesticDetailResult: (state, {payload : {appendElem, list}}) => {
+    setDomesticDetailResult: (state, {payload : {appendElem, updateElem, deleteElem, list}}) => {
       if (appendElem) {
         if(!state.detailResult.list.find(item => item.key === appendElem.key)) {
           state.detailResult = {
@@ -31,8 +31,25 @@ const resultsStore = createSlice({
           }
         }
       }
+      if(updateElem) {
+        const tmp = []
+          for (const elem of state.detailResult.list) {
+            tmp.push({
+              ...elem,
+              active: elem.key === updateElem.key ? updateElem.active : elem.active
+            })
+          }
+          state.detailResult = {list: tmp}
+      }
+      if(deleteElem) {
+        state.detailResult = {
+          list: state.detailResult.list.filter(item => item.key !== deleteElem.key)
+        }
+      }
       if (list) {
-        state.detailResult = {list: list}
+        state.detailResult = {
+          list: list
+        }
       }
     },
   },

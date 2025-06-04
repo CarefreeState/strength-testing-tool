@@ -387,11 +387,11 @@ const LayoutSearch = ({type}) => {
           detailsReload()
         }} 
         del={() => {
-          if(results.detailResult.list.find(result => result.key === item.key)) {
-            dispatch(setDetailResult({
-              list: results.detailResult.list.filter(result => result.key !== item.key)
-            }))
-          }
+          dispatch(setDetailResult({
+            deleteElem: {
+              key: item.key,
+            },
+          }))
         }}
       />)
     }
