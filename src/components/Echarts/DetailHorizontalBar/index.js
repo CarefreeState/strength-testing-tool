@@ -49,9 +49,15 @@ const getSeries = (map) => {
   return ret
 }
 
-const DetailHorizontalBar = ({refresh, names, max, switchMetrics, data, del}) => {
+const DetailHorizontalBar = ({names, max, switchMetrics, data, del}) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+
+  // 这个作为 reload 的标志，防止其他组件的影响
+  const [refresh, setRefresh] = useState(0)
+  const reload = () => {
+    setRefresh(refresh + 1)
+  }
 
   useEffect(() => {
     const chartDom = chartRef.current;
@@ -105,7 +111,10 @@ const DetailHorizontalBar = ({refresh, names, max, switchMetrics, data, del}) =>
       series: getSeries(data.data)
     };
     
-    chartInstance.current.on('legendselectchanged', switchMetrics)
+    chartInstance.current.on('legendselectchanged', (e) => {
+      switchMetrics(e)
+      reload()
+    })
     chartInstance.current.setOption(option);
 
     // 添加防抖的resize监听
@@ -127,7 +136,7 @@ const DetailHorizontalBar = ({refresh, names, max, switchMetrics, data, del}) =>
       resizeObserver.disconnect();
       chartInstance.current?.dispose();
     };
-  }, [refresh]);
+  }, [refresh, max]);
 
   return (
     <>
